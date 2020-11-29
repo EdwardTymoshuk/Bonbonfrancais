@@ -144,7 +144,7 @@ html {
 .home {
 	display: grid; 
 	cursor: default;
-	background-image: url(../img/5.png);
+	background-image: url(../img/bg.jpg);
 	background-attachment: fixed;
 	background-position: center;
     background-size: cover;
@@ -173,7 +173,7 @@ html {
 /* ABOUT ME PAGE */
 .about-me {
 	display: grid;
-	/* background-image: url(../img/5.png); */
+	/* background-image: url(../img/bg.jpg); */
 	background-position: left bottom;
 	background-size: cover;
 	background-color: #f3eeee;
@@ -222,7 +222,7 @@ html {
 /* ADVANTAGES PAGE */
 .advantages {
 	display: grid;
-	background-image: url(../img/5.png);
+	background-image: url(../img/bg.jpg);
 	background-position: left bottom;
 	background-size: cover;
 	background-color: #f3eeee;
@@ -266,7 +266,7 @@ html {
 /* FOR WHOM PAGE */
 .for-whom {
 	display: grid;
-	/* background-image: url(../img/5.png); */
+	/* background-image: url(../img/bg.jpg); */
 	background-position: left bottom;
 	background-color: #f3eeee;
 	background-size: cover;
@@ -320,7 +320,7 @@ html {
 }
 /* HOW WE WORK PAGE */
 .how-we-work {
-	background-image: url(../img/5.png);
+	background-image: url(../img/bg.jpg);
 	background-position: left bottom;
 	background-color: #f3eeee;
 	background-size: cover;
@@ -366,7 +366,7 @@ html {
 /* FEEDBACK PAGE */
 .feedback {
 	display: grid;
-	/* background-image: url(../img/5.png); */
+	/* background-image: url(../img/bg.jpg); */
 	background-position: left bottom;
 	background-size: cover;
 	background-color: #f3eeee;
@@ -424,7 +424,7 @@ html {
 /* PRICE PAGE */
 .price {
 	display: grid;
-	background-image: url(../img/5.png);
+	background-image: url(../img/bg.jpg);
 	background-position: left bottom;
 	background-size: cover;
 	background-color: #f3eeee;
@@ -507,7 +507,7 @@ html {
 /* CONTACT PAGE */
 .contact {
 	display: grid;
-	/* background-image: url(../img/5.png); */
+	/* background-image: url(../img/bg.jpg); */
 	background-position: left bottom;
 	background-size: cover;
 	background-color: #f3eeee;
@@ -745,14 +745,12 @@ blockquote:before {
 		font-size: 1.2em;
 	}
 	.header-logo {
-		font-size: 3em;
+		font-size: 2em;
+		align-self: center;
 	}
 	.header-socials a {
 		font-size: .6em;
 	}
-	.home{
-    background-attachment: scroll;
-}
 	.header-socials p {
 		font-size: 1em;
 		margin: 0;
@@ -766,15 +764,26 @@ blockquote:before {
 	.header-socials-items a{
 		padding-right: 0;
 	}
+	.header-languages {
+		font-size: .8em
+	}
+	.header-languages img{
+		height: 2em;
+	}
+	.home{
+		background-attachment: scroll;
+	}
 	.home-content h1{
 		text-align: center;
 		font-size: 2em;
 		color: #6E535B;
 		font-family: 'Ubuntu', sans-serif;
 	}
+	.home-content {
+		padding: 0;
+	}
 	.home-content h3{
-		padding-top: 75px;
-		font-size: 6em;
+		font-size: 5em;
 	}
 	.about-me-photo {
 		 padding-bottom: 20px;
