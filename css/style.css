@@ -745,6 +745,7 @@ blockquote:before {
 		font-size: 1.2em;
 	}
 	.header-logo {
+		display: none;
 		font-size: 2em;
 		align-self: center;
 	}
@@ -831,7 +832,7 @@ blockquote:before {
 		justify-self: center;
 		font-size: 1em;
 	}
-	.footer div {
+	footer>div{
 		text-align: center !important;
 	}
 	.separator h2 {

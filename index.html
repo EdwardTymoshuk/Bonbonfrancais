@@ -12,22 +12,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:image" content="https://tatalessons.tk/img/about-me-photo-2.jpg" />
-
-  <!-- FONTS -->
-  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Bad+Script|Lobster|Pacifico&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Yeseva+One&display=swap" rel="stylesheet">
-  <link href="/fonts/CODE Light.otf" rel='stylesheet' type='text/css'>
-  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
   <!-- ICONS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
-  <link href="css/style.min.css" rel="stylesheet" type="text/css" />
+  <link rel="preload" href="../css/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="../css/style.min.css"></noscript>
+<link rel="preload" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></noscript>
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Bad+Script|Lobster|Pacifico&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Yeseva+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
 </head>
 
 <body id="body" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -110,7 +108,7 @@
     <article class="about-me-container container">
       <div class="row">
         <aside class="about-me-photo col-sm-12 col-md-6">
-          <img src="img/about-me-photo.png" alt="">
+          <img src="img/about-me-photo.jpg" alt="">
         </aside>
         <aside class="about-me-content col-sm-12 col-md-6">
           <h2>Хто я ?</h2>
@@ -162,7 +160,7 @@
           </ul>
         </aside>
         <aside class="about-me-photo col-sm-12 col-md-6">
-          <img src="img/about-me-photo-1.png" alt="">
+          <img src="img/about-me-photo-1.jpg" alt="">
         </aside>
       </div>
     </article>
@@ -171,8 +169,21 @@
 
   <!-- VIDEO BLOCK -->
   <section class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4xa1QhByqNc" autostart="false" preload="none"
-      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" controls allowfullscreen></iframe>
+    <iframe id="videoFrame" class="embed-responsive-item" src="" autostart="false"
+      preload="none" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" controls
+      allowfullscreen></iframe>
+      <script>
+        function setVideoFrame(){
+    document.getElementById('videoFrame').src="https://www.youtube.com/embed/4xa1QhByqNc";
+  }
+  if (window.addEventListener)  // W3C DOM
+    window.addEventListener('load', setVideoFrame, false);
+  else if (window.attachEvent) { // IE DOM
+    window.attachEvent('onload', setVideoFrame);
+  }else{ //NO SUPPORT, lauching right now
+    setVideoFrame();
+  }
+  </script>
   </section>
   <!-- /END OF VIDEO BLOCK -->
 
@@ -586,7 +597,7 @@
   <footer id="footer" class="footer container-fluid">
     <div class="row">
       <aside class="col-md-4 text-left">
-        <span>@2019 TaTa. Your online french teacher</span>
+        <span>@2019 BonBon Francais. Your online french teacher</span>
       </aside>
       <aside class="col-md-4 text-center">
         <span>Website is made by <a href="https://www.instagram.com/edward__t" target="_blank">Edward T</a></span>
@@ -599,6 +610,7 @@
   <!-- /END OF FOOTER -->
 
   <!-- SCRIPTS -->
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

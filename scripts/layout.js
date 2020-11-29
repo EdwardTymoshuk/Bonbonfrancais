@@ -84,4 +84,5 @@
         e.preventDefault;
         setTimeout(zalupa, 5000);
     })
+
 }())

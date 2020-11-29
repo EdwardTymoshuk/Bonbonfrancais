@@ -10,21 +10,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:image" content="https://tatalessons.tk/img/about-me-photo-2.jpg" />
-  <!-- FONTS -->
-  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Bad+Script|Lobster|Pacifico&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Yeseva+One&display=swap" rel="stylesheet">
-  <link href="/fonts/CODE Light.otf" rel='stylesheet' type='text/css'>
-  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
   <!-- ICONS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
-  <link href="../css/style.min.css" rel="stylesheet" type="text/css" />
+  <link rel="preload" href="../css/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="../css/style.min.css"></noscript>
+<link rel="preload" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></noscript>
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Bad+Script|Lobster|Pacifico&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Yeseva+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
 </head>
 
 <body id="body" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -164,13 +163,25 @@ good, the eternal. Since then, I have been working exclusively on Skype.
   </section>
   <!-- /END OF ABOUT ME PAGE -->
 
-  <!-- VIDEO BLOCK -->
-  <section class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4xa1QhByqNc" autostart="false"
-      preload="none" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" controls
-      allowfullscreen></iframe>
-  </section>
-  <!-- /END OF VIDEO BLOCK -->
+<!-- VIDEO BLOCK -->
+<section class="embed-responsive embed-responsive-16by9">
+  <iframe id="videoFrame" class="embed-responsive-item" src="" autostart="false"
+    preload="none" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" controls
+    allowfullscreen></iframe>
+    <script>
+      function setVideoFrame(){
+  document.getElementById('videoFrame').src="https://www.youtube.com/embed/4xa1QhByqNc";
+}
+if (window.addEventListener)  // W3C DOM
+  window.addEventListener('load', setVideoFrame, false);
+else if (window.attachEvent) { // IE DOM
+  window.attachEvent('onload', setVideoFrame);
+}else{ //NO SUPPORT, lauching right now
+  setVideoFrame();
+}
+</script>
+</section>
+<!-- /END OF VIDEO BLOCK -->
 
   <!-- ADVANTAGES PAGE -->
 
@@ -600,8 +611,8 @@ good, the eternal. Since then, I have been working exclusively on Skype.
   <!-- FOOTER -->
   <footer id="footer" class="footer container-fluid">
     <div class="row">
-      <aside class="col-md-4 text-left">
-        <span>@2019 TaTa. Your online french teacher</span>
+      <aside class="col-md-4 text-left"> 
+        <span>@2019 BonBon Francais. Your online french teacher</span>
       </aside>
       <aside class="col-md-4 text-center">
         <span>Website is made by <a href="https://www.instagram.com/edward__t" target="_blank">Edward T</a></span>
