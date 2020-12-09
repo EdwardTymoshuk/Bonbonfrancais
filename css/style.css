@@ -60,7 +60,9 @@ html {
 	color: #6E535B;
 	font-size: 4em;
 }
-.header-logo a {
+.header-logo a,
+.header-logo a:hover
+ {
 	text-decoration: none;
 	color: inherit;
 	cursor: pointer;
@@ -635,6 +637,7 @@ html {
 	background-color: #fff;
 	margin-bottom: 0;
 }
+
 .separator h4 {
 	-ms-flex-item-align: end;
 	    align-self: flex-end;
