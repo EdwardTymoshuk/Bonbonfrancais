@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /img/
+Disallow: /scripts/
+Disallow: /css/
+Disallow: /mail.php
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Yandex
+Allow: /img/
+Disallow: /scripts/
+Disallow: /css/
+Disallow: /mail.php
+Host: https://tatalessons.tk
