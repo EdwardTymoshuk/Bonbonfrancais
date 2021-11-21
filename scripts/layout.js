@@ -1,5 +1,8 @@
 (function Layout() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> c0c430927e84d940d6887b3d326fca32bd7c31a6
     // DETECT MOBILE DEVICE
     let isMobileDevice = function () {
         return ((
@@ -40,6 +43,7 @@
     })
 
     // PAGE BUTTONS
+<<<<<<< HEAD
     // free lessons button
     const contactForm = document.querySelector('#contact-form');
     const contactMessage = document.getElementById('message');
@@ -49,10 +53,22 @@
         item.addEventListener('click', (e) => {
             e.preventDefault();
             contactMessage.value = `Доброго дня, я б хотів(-ла) отримати безкоштовний урок французької.`;
+=======
+    // FREE LESSON BUTTONS
+    const contactForm = document.querySelector('#contact-form');
+    const contactMessage = document.getElementById('message');
+    let bookLessonsBtns = document.querySelectorAll('.book-lesson-btn');
+
+    bookLessonsBtns.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            contactMessage.value = `Доброго дня, я б хотів(-ла) замовити урок французької.`;
+>>>>>>> c0c430927e84d940d6887b3d326fca32bd7c31a6
             contactForm.scrollIntoView();
         })
     })
     // ORDER LESSONS BUTTONS
+<<<<<<< HEAD
     let oneHourBtn = document.querySelector('#one-hour-btn');
     let fiveHourBtn = document.querySelector('#five-hour-btn');
     let tenHourBtn = document.querySelector('#ten-hour-btn');
@@ -79,10 +95,44 @@
     const result = document.querySelector('.result');
 
     const clearResult = () => {
+=======
+    let firstBlockBtn = document.querySelector('#first-block-btn');
+    let secondBlockBtn = document.querySelector('#second-block-btn');
+    let thirdBlockBtn = document.querySelector('#third-block-btn');
+    // order first price block
+    firstBlockBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        contactMessage.value = `Доброго дня, я б хотів(-ла) замовити курс "Загальна (розмовна) французька".`;
+        contactForm.scrollIntoView();
+    })
+    // order second price block
+    secondBlockBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        contactMessage.value = `Доброго дня, я б хотів(-ла) замовити курс "Підготовка до іспитів DELF/DALF".`;
+        contactForm.scrollIntoView();
+    })
+    // order third price block
+    thirdBlockBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        contactMessage.value = `Доброго дня, я б хотів(-ла) замовити курс "Ділова французька".`;
+        contactForm.scrollIntoView();
+    })
+
+    const submitBtn = document.querySelector('#submit');
+    const result = document.querySelector('.result');
+
+    const zalupa = () => {
+>>>>>>> c0c430927e84d940d6887b3d326fca32bd7c31a6
         result.innerHTML = '';
     }
     submitBtn.addEventListener('click', (e) => {
         e.preventDefault;
+<<<<<<< HEAD
         setTimeout(clearResult, 5000);
     })
+=======
+        setTimeout(zalupa, 5000);
+    })
+
+>>>>>>> c0c430927e84d940d6887b3d326fca32bd7c31a6
 }())

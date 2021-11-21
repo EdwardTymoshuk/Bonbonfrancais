@@ -12,11 +12,19 @@
 	
 		function send_form($message) {
 	
+<<<<<<< HEAD
 			$mail_to = "eduard.tymoshuk@gmail.com";
 			$subject = "Лист з контактної форми";
 			$headers = "MIME-Version: 1.0\r\n";
 			$headers .= "Content-type: text/html; charset=utf-8\r\n";
 			$headers .= "From: Система повідомлень <no-reply@".$_SERVER['HTTP_HOST'].">\r\n";
+=======
+			$mail_to = "tetianamirchukk@gmail.com";
+			$subject = "Лист з контактної форми";
+			$headers = "MIME-Version: 1.0\r\n";
+			$headers .= "Content-type: text/html; charset=utf-8\r\n";
+			$headers .= "From: Нове повідомлення з сайту bonbonfrancais.online <no-reply@".$_SERVER['HTTP_HOST'].">\r\n";
+>>>>>>> c0c430927e84d940d6887b3d326fca32bd7c31a6
 
 			mail($mail_to, $subject, $message, $headers);
 		
