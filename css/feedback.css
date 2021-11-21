@@ -1,0 +1,41 @@
+.form-control {
+    margin-bottom: 10px;
+}
+.modal-header span{
+    text-align: center;
+    font-size: 2em;
+}
+.disabled {
+    cursor: not-allowed;
+}
+.not-accepted {
+    background: lightgrey;
+}
+.not-accepted span,
+.not-accepted img,
+.not-accepted h3,
+.not-accepted div
+{
+    color: grey;
+    -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+.not-accepted:hover {
+    animation: none;
+}
+.feedback-thanks {
+    margin: 50px 20px 0 20px;
+    text-align: center;
+    color: #000;
+}
+.feedback-thanks span{
+    color: #000;
+}
+.input-error {
+    border: 1px solid red;
+}
+.span-error {
+    display: block;
+    color: red;
+    margin: -10px 0 10px 0;
+}

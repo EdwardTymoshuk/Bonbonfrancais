@@ -68,7 +68,7 @@ html {
 	cursor: pointer;
 }
 .header-languages {
-	font-family: 'Yeseva One', cursive;
+	font-family: 'Podkova', serif;
 	font-size: 1em;
 	align-self: center;
 	text-align: end;
@@ -92,7 +92,7 @@ html {
 	transform: scale(1.5)
 }
 .navbar {
-	font-family: 'Yeseva One', cursive;
+	font-family: 'Podkova', serif;
 	font-size: 1.6em;
 	padding-bottom: 10px
 }
@@ -170,12 +170,11 @@ html {
     text-align: center;
 	font-size: 3em;
 	color: #6E535B;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Lora', serif;
 }
 /* ABOUT ME PAGE */
 .about-me {
 	display: grid;
-	/* background-image: url(../img/bg.jpg); */
 	background-position: left bottom;
 	background-size: cover;
 	background-color: #f3eeee;
@@ -208,11 +207,11 @@ html {
 .about-me-content {
 	font-size: 1.5em;
 	color: #000;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Lora', serif;
 	text-align: justify;
 }
 .about-me-content h2{
-	font-family: 'Yeseva One', cursive;
+	font-family: 'Podkova', serif;
 	color: #6E535B;
 	text-align: center;
 	padding: 75px 0;
@@ -224,10 +223,9 @@ html {
 /* ADVANTAGES PAGE */
 .advantages {
 	display: grid;
-	background-image: url(../img/bg.jpg);
+	background-color: #fefefe;
 	background-position: left bottom;
 	background-size: cover;
-	background-color: #f3eeee;
 	min-height: 100vh;
 	width: 100vw;
 }
@@ -262,13 +260,12 @@ html {
 }
 .advantages-container-content-list p {
 	color: #000;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Lora', serif;
 	font-size: 1.5em;
 }
 /* FOR WHOM PAGE */
 .for-whom {
 	display: grid;
-	/* background-image: url(../img/bg.jpg); */
 	background-position: left bottom;
 	background-color: #f3eeee;
 	background-size: cover;
@@ -289,26 +286,24 @@ html {
 	-ms-flex-item-align: center;
 	    align-self: center;
 	padding: 50px 70px;
-	-webkit-transition: ease-in .5s;
-	transition: ease-in .5s;
+	-webkit-transition: ease-in-out .2s;
+	transition: ease-in-out .2s;
 }
 .for-whom-content:hover, 
 .for-whom-content:focus {
 	background-color: #fff;
 	cursor: pointer;
-	-webkit-transform: scale(1.1, 1.1);
-	        transform: scale(1.1, 1.1)
 }
 .for-whom-container h3 {
 	text-align: center;
-	font-family: 'Yeseva One', cursive;
+	font-family: 'Podkova', serif;
 	color: #6E535B;
 	font-size: 3em;
 }
 .for-whom-container span {
 	text-align: center;
 	color: #000;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Lora', serif;
 	font-size: 1.7em;
 }
 .for-whom-ico {
@@ -322,9 +317,8 @@ html {
 }
 /* HOW WE WORK PAGE */
 .how-we-work {
-	background-image: url(../img/bg.jpg);
 	background-position: left bottom;
-	background-color: #f3eeee;
+	background-color: #fefefe;
 	background-size: cover;
 	min-height: 100vh;
 	width: 100vw;
@@ -356,19 +350,18 @@ html {
 	grid-template-rows: repeat(6, 1fr);
 }
 .how-we-work-container-content-list h3 {
-	font-family: 'Yeseva One', cursive;
+	font-family: 'Podkova', serif;
 	color: #6E535B;
 	font-size: 2.2em
 }
 .how-we-work-container-content-list p {
 	color: #000;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Lora', serif;
 	font-size: 1.5em;
 }
 /* FEEDBACK PAGE */
 .feedback {
 	display: grid;
-	/* background-image: url(../img/bg.jpg); */
 	background-position: left bottom;
 	background-size: cover;
 	background-color: #f3eeee;
@@ -389,27 +382,25 @@ html {
 	-ms-flex-item-align: center;
 	    align-self: center;
 	padding: 50px 75px;
-	-webkit-transition: ease-in .5s;
-	transition: ease-in .5s;
+	-webkit-transition: ease-in-out .2s;
+	transition: ease-in-out .2s;
 }
 .feedback-content:hover, 
 .feedback-content:focus {
 	background-color: #fff;
 	cursor: pointer;
-	-webkit-transform: scale(1.1, 1.1);
-			transform: scale(1.1, 1.1);
 	z-index: 999;
 }
 .feedback-container h3 {
 	text-align: center;
-	font-family: 'Yeseva One', cursive;
+	font-family: 'Podkova', serif;
 	color: #6E535B;
 	font-size: 2.5em
 }
 .feedback-container span {
 	text-align: center;
 	color: #000;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Lora', serif;
 	font-size: 1.3em;
 	font-style: italic;
 }
@@ -423,13 +414,36 @@ html {
 	border-left: 5px solid #6E535B;
 	text-align: center;
 }
+.feedback-modal {
+	display: grid;
+	padding: 40px;
+    justify-content: center;
+}
+.feedback-btn {
+	width: max-content;
+	background-color: #6E535B;
+	color: #fff;
+	font-size: 1.5em;
+    justify-self: center;
+    border: 2px solid #6E535B;
+	border-radius: 2em;
+	-webkit-transition: all ease .3s;
+	transition: all ease .3s;
+	margin: 20px;
+}
+.feedback-btn:hover {
+	background-color: #fff;
+	color: #6E535B;
+}
+.feedback-modal-textarea {
+	resize: none;
+}
 /* PRICE PAGE */
 .price {
 	display: grid;
-	background-image: url(../img/bg.jpg);
 	background-position: left bottom;
 	background-size: cover;
-	background-color: #f3eeee;
+	background-color: #fefefe;
 	width: 100vw;
 }
 .price-container {
@@ -460,7 +474,7 @@ html {
 }
 .price-thumbnail-content {
 	background-color: #6E535B;
-	font-family: 'Yeseva One', cursive;
+	font-family: 'Podkova', serif;
     padding: 0;
     border-radius: 20px;
     border-bottom-left-radius: 0;
@@ -473,16 +487,16 @@ html {
     color: burlywood;
     border-bottom: 1px solid #fff;
     font-size: 6em;
-    font-family: 'Yeseva One', cursive;
+    font-family: 'Podkova', serif;
 }
 .price-thumbnail h3 {
-	padding: 20px 0;
+	padding: 20px 10px;
     font-size: 2em;
 }
 .price-thumbnail h5 {
 	color: burlywood;
-	padding: 20px 0;
-	font-size: 2.5em;
+	padding: 20px 10px;
+	font-size: 1.5em;
 }
 .price-thumbnail p {
 	padding: 10px 0;
@@ -492,7 +506,7 @@ html {
     padding: 10px 0;
 }
 .price-thumbnail button {
-	font-family: 'Yeseva One', cursive;
+	font-family: 'Podkova', serif;
 	background-color: #fff;
 	color: #6E535B;
 	height: 50px;
@@ -501,15 +515,12 @@ html {
 }
 .price-thumbnail button:hover,
 .price-thumbnail button:focus {
-	-webkit-transform: scale(1.1, 1.1);
-	        transform: scale(1.1, 1.1);
 	background-color: burlywood;
 	cursor: pointer;
 }
 /* CONTACT PAGE */
 .contact {
 	display: grid;
-	/* background-image: url(../img/bg.jpg); */
 	background-position: left bottom;
 	background-size: cover;
 	background-color: #f3eeee;
@@ -520,13 +531,13 @@ html {
 }
 .contact-article {
 	font-size: 2em;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Lora', serif;
 	text-align: center;
 	padding-bottom: 50px;
 }
 .contact-social {
 	align-self: center;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Lora', serif;
 }
 .contact-social .col-4,
 .contact-social .col-md-12 {
@@ -552,7 +563,7 @@ html {
 }
 .contact-form {
 	align-self: center;
-	font-family: 'Yeseva One', cursive;
+	font-family: 'Podkova', serif;
 }
 .contact-form label {
 	font-size: 1.2em;
@@ -567,7 +578,7 @@ html {
 .contact-form button {
 	line-height: 2em;
 	float: right;
-	font-family: 'Yeseva One', cursive;
+	font-family: 'Podkova', serif;
     background-color: #6E535B;
     color: #fff;
 	-webkit-transition: all ease .3s;
@@ -587,7 +598,7 @@ html {
 .result {
 	line-height: 1.5em;
 	height: 50px;
-	font-family: 'Yeseva One', cursive;
+	font-family: 'Podkova', serif;
 	-webkit-transition: all ease .3s;
 	transition: all ease .3s;
 }
@@ -596,6 +607,7 @@ html {
 	background-color: #F3EEEE;
 	color: #6E535B;
 	padding: 15px;
+	overflow: hidden;
 }
 .footer div {
 	-ms-flex-item-align: center;
@@ -621,7 +633,7 @@ html {
 	-webkit-box-pack: center;
 	    -ms-flex-pack: center;
 	        justify-content: center;
-	font-family: 'Yeseva One', cursive;
+	font-family: 'Podkova', serif;
 	color: #6E535B;
 	padding: 75px 0;
 	text-align: center;
@@ -643,12 +655,12 @@ html {
 	    align-self: flex-end;
 	text-align: center;
 	color: #6E535B;
-	font-family: 'Yeseva One', cursive;
+	font-family: 'Podkova', serif;
 	font-size: 2.1em;
 }
 .separator p {
 	color: #000;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Lora', serif;
 	font-style: italic;
 	opacity: .8;
 	font-size: 1.5em;
@@ -664,7 +676,7 @@ html {
 .free-lesson button {
 	height: 75px;
     width: auto;
-    font-family: 'Yeseva One', cursive;
+    font-family: 'Podkova', serif;
     background-color: #6E535B;
     color: #fff;
     font-size: 1.5em;
@@ -727,7 +739,7 @@ blockquote:before {
 	}
 	.how-we-work-thumbnails p {
 		color: #000;
-		font-family: 'Ubuntu', sans-serif;
+		font-family: 'Lora', serif;
 		font-size: 1.3em;
 	}
 	.price-thumbnail h4 {
@@ -781,7 +793,7 @@ blockquote:before {
 		text-align: center;
 		font-size: 2em;
 		color: #6E535B;
-		font-family: 'Ubuntu', sans-serif;
+		font-family: 'Lora', serif;
 	}
 	.home-content {
 		padding: 0;

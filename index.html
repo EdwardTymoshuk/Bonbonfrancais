@@ -10,15 +10,20 @@
   >
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta property="og:image" content="https://tatalessons.tk/img/about-me-photo-2.jpg" />
+<meta property="og:title" content="Уроки французької мови - французька онлайн через скайп" />
+<meta property="og:description" content="Вивчити іноземну мову по Skype? -  Вчитель-репетитор французької мови онлайн. 
+                                    Вивчити розмовну французьку для усіх рівнів не виходячи з дому. 
+                                    Приватні уроки дистанційно, граматика, поповнення словникового запасу." />
+<meta property="og:url" content="http://bonbonfrancais.online/" />
+  <meta property="og:image" content="http://bonbonfrancais.online/img/about-me-photo.jpg" />
   <!-- ICONS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <!-- CSS -->
 <link rel="preload" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<link rel="preload" href="../css/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/feedback.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Bad+Script|Lobster|Pacifico&display=swap"
     rel="stylesheet">
@@ -32,7 +37,7 @@
   <section id="home" class="home">
     <header id="header-block" class="header-block fixed-top">
       <div id="header-panel" class="header-panel container-fluid">
-        <div class="row">
+        <div id="header-panel-row" class="row">
           <div id="header-socials" class="header-socials col">
             <div class="container-fluid">
               <div class="row">
@@ -47,7 +52,7 @@
           <div class="header-logo col">
             <a href="#home">BonBon</a>
           </div>
-          <div class="header-languages col">
+          <div id="header-languages" class="header-languages col">
             <div>
                <a href="#"><img src="img/flag-ua.png" style="height:3.2em" onmouseover="this.style.transform='none';"/></a>
               <a href="en/"><img src="img/flag-uk.png"/></a>
@@ -388,6 +393,7 @@
     <header class="header ">
       <h2>Що мої учні говорять про мене ?</h2>
     </header>
+    <aside id="feedback-articles">
     <article class="feedback-content container-fluid">
       <div class="feedback-container row">
         <div class="feedback-img col-sm-12 col-md-3">
@@ -446,9 +452,55 @@
         </div>
       </div>
     </article>
-    <aside class="free-lesson">
-      <button class="free-lesson-btn">Хочу безкоштовний пробний урок</button>
-    </aside>
+  </aside>
+<aside class="feedback-modal">
+  <h3>Навчався/навчалася зі мною? Залиш свій вігук!</h3>
+    <!-- Button trigger modal -->
+<button type="button" class="btn feedback-btn" data-toggle="modal" data-target="#feedback-modal">
+  Залишити відгук
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="feedback-modal" tabindex="-1" role="dialog" aria-labelledby="feedback-btn" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span>Залиш свій відгук</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="modal-form">
+          <div class="form-group">
+            <label  for="firstName">Ім'я</label>
+            <input id="feedback-firstName" name="firstName" required type="text" class="form-control input-control" placeholder="Введи своє ім'я" />
+            <span id="feedback-firstName-error" class="span-error"></span>
+
+            <label for="email">Email адресса</label>
+            <input id="feedback-email" name="email" required type="email" class="form-control input-control"  placeholder="Введи свою email адресу" />
+            <span id="feedback-email-error" class="span-error"></span>
+
+            <label for="country">Країна</label>
+            <input id="feedback-country" name="country" required type="text" class="form-control input-control"  placeholder="Введи свою країну" />            
+            <span id="feedback-country-error" class="span-error"></span>
+
+            <label for="photo">Фото</label>
+            <input id="feedback-photo" name="photo" type="file" class="form-control" alt="Feedback photo" />
+            
+            <label for="photo">Відгук</label>
+            <textarea id="feedback-textarea" name="textarea" required type="text" class="form-control input-control feedback-modal-textarea" rows="5" resize="none"  placeholder="Напиши свій відгук"></textarea>
+            <span id="feedback-textarea-error" class="span-error"></span>
+          </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button id="feedback-button" type="submit" class="btn btn-primary" >Надіслати</button>
+      </div>
+    </div>
+  </div>
+</div>
+</aside>
   </section>
   <!-- /END OF FEEDBACK PAGE -->
 
@@ -614,7 +666,9 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="scripts/contact.min.js"></script>
-  <script src="scripts/layout.min.js"></script>
+  <script src="scripts/layout.js"></script>
+  <script src="scripts/setFeedback.js"></script>
+  <script src="scripts/getFeedback.js"></script>
   <script src="mail.php"></script>
 </body>
 </html>

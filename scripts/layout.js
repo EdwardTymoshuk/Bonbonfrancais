@@ -1,4 +1,5 @@
 (function Layout() {
+
     // DETECT MOBILE DEVICE
     let isMobileDevice = function () {
         return ((
@@ -39,7 +40,7 @@
     })
 
     // PAGE BUTTONS
-    // FREE LESSON BUTTONS
+    // free lessons button
     const contactForm = document.querySelector('#contact-form');
     const contactMessage = document.getElementById('message');
     let freeLessonsBtns = document.querySelectorAll('.free-lesson-btn');
@@ -73,16 +74,15 @@
         contactMessage.value = `Доброго дня, я б хотів(-ла) замовити десять уроків французької із економією 40€.`;
         contactForm.scrollIntoView();
     })
-
+    // clear result div
     const submitBtn = document.querySelector('#submit');
     const result = document.querySelector('.result');
 
-    const zalupa = () => {
+    const clearResult = () => {
         result.innerHTML = '';
     }
     submitBtn.addEventListener('click', (e) => {
         e.preventDefault;
-        setTimeout(zalupa, 5000);
+        setTimeout(clearResult, 5000);
     })
-
 }())
