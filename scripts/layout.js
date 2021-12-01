@@ -122,7 +122,6 @@
     const result = document.querySelector('.result');
 
     const zalupa = () => {
->>>>>>> c0c430927e84d940d6887b3d326fca32bd7c31a6
         result.innerHTML = '';
     }
     submitBtn.addEventListener('click', (e) => {
