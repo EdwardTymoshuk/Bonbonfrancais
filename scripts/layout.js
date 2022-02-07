@@ -1,8 +1,4 @@
 (function Layout() {
-<<<<<<< HEAD
-
-=======
->>>>>>> c0c430927e84d940d6887b3d326fca32bd7c31a6
     // DETECT MOBILE DEVICE
     let isMobileDevice = function () {
         return ((
@@ -13,6 +9,20 @@
             navigator.userAgent.match(/IEMobile/i)
         ) ? true : false);
     }
+    //LOGIN 
+    //get name from local storage and refirect to index.html
+const headerPanelRow = document.querySelector('#header-languages')
+let divEl = document.createElement('div')
+let localStorageName = localStorage.getItem('localStorageName')
+localStorageName && (divEl.innerHTML = `<p>Привіт, <strong>${localStorageName}</strong>.</p><button id="logout-btn" class="logout-btn">Log out</button>`, headerPanelRow.appendChild(divEl))
+
+const logOut = () => {
+    localStorage.removeItem('localStorageName') 
+    window.location.href = './index.html'
+}
+let logoutBtn = document.querySelector('#logout-btn')
+logoutBtn && logoutBtn.addEventListener('click',logOut )
+
     // HEADER TRANSFORM
     window.addEventListener('scroll', function () {
         let headerEl = document.getElementById('header-block');
@@ -43,17 +53,6 @@
     })
 
     // PAGE BUTTONS
-<<<<<<< HEAD
-    // free lessons button
-    const contactForm = document.querySelector('#contact-form');
-    const contactMessage = document.getElementById('message');
-    let freeLessonsBtns = document.querySelectorAll('.free-lesson-btn');
-
-    freeLessonsBtns.forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            contactMessage.value = `Доброго дня, я б хотів(-ла) отримати безкоштовний урок французької.`;
-=======
     // FREE LESSON BUTTONS
     const contactForm = document.querySelector('#contact-form');
     const contactMessage = document.getElementById('message');
@@ -63,39 +62,10 @@
         item.addEventListener('click', (e) => {
             e.preventDefault();
             contactMessage.value = `Доброго дня, я б хотів(-ла) замовити урок французької.`;
->>>>>>> c0c430927e84d940d6887b3d326fca32bd7c31a6
             contactForm.scrollIntoView();
         })
     })
     // ORDER LESSONS BUTTONS
-<<<<<<< HEAD
-    let oneHourBtn = document.querySelector('#one-hour-btn');
-    let fiveHourBtn = document.querySelector('#five-hour-btn');
-    let tenHourBtn = document.querySelector('#ten-hour-btn');
-    // order one lesson
-    oneHourBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        contactMessage.value = `Доброго дня, я б хотів(-ла) замовити один урок французької.`;
-        contactForm.scrollIntoView();
-    })
-    // order five lessons
-    fiveHourBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        contactMessage.value = `Доброго дня, я б хотів(-ла) замовити п'ять уроків французької із економією 10€.`;
-        contactForm.scrollIntoView();
-    })
-    // order ten lessons
-    tenHourBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        contactMessage.value = `Доброго дня, я б хотів(-ла) замовити десять уроків французької із економією 40€.`;
-        contactForm.scrollIntoView();
-    })
-    // clear result div
-    const submitBtn = document.querySelector('#submit');
-    const result = document.querySelector('.result');
-
-    const clearResult = () => {
-=======
     let firstBlockBtn = document.querySelector('#first-block-btn');
     let secondBlockBtn = document.querySelector('#second-block-btn');
     let thirdBlockBtn = document.querySelector('#third-block-btn');
@@ -121,17 +91,11 @@
     const submitBtn = document.querySelector('#submit');
     const result = document.querySelector('.result');
 
-    const zalupa = () => {
+    const clearResult = () => {
         result.innerHTML = '';
     }
     submitBtn.addEventListener('click', (e) => {
         e.preventDefault;
-<<<<<<< HEAD
         setTimeout(clearResult, 5000);
     })
-=======
-        setTimeout(zalupa, 5000);
-    })
-
->>>>>>> c0c430927e84d940d6887b3d326fca32bd7c31a6
 }())

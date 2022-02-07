@@ -2,17 +2,6 @@ const { log } = console
 
 const loginButton = document.querySelector("#login-button")
 
-//get name from local storage and refirect to index.html
-let localStorageName = localStorage.getItem('localStorageName')
-localStorageName != null && (window.location.href = '../index.html' )
-log(localStorageName)
-
-//set login name
-const headerPanelRow = document.querySelector('#header-languages')
-const divEl = document.createElement('div')
-localStorage.localStorageName != null && headerPanelRow.appendChild(divEl)
-divEl.innerHTML = `<p>Привіт, <strong>${localStorage.localStorageName}</strong>.</p>`
-
 //add onclick event listener
 loginButton.addEventListener("click", (e) => {
     e.preventDefault()
@@ -28,7 +17,6 @@ const login = async () => {
         'email': username,
         'password': password
     }
-    log(data)
     const settings = {
         method: 'POST',
         headers: {
@@ -39,19 +27,15 @@ const login = async () => {
     }
     try {
         await fetch(`http://localhost:3001/admin-panel/login`, settings).then(res => {
-            res.status !== 200 ?
-            log('Looks like there was a problem. Status Code: ' + res.status) :
-            // res.then(data => {
-            //     localStorage.setItem("localStorageName", data.name)
-            //     log(localStorage)
-            //     window.location.href = './index.html';
-            // })
-            log(res.JSON.stringify(data))
-            
-    }
-        )
+            res.status !== 200 &&
+            log('Looks like there was a problem. Status Code: ' + res.status)
+            return res.json()
+    }).then(data => {
+                localStorage.setItem("localStorageName", data.name)
+                window.location.href = './index.html'
+    })
     } catch (err) {
-        log(err)
+        return err
     }
     return false
 }
