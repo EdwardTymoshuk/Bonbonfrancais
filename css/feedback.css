@@ -1,3 +1,22 @@
+@keyframes openWindow {
+    0% {opacity: 0; transform: scale(0.8);}
+  100% {opacity: 1;transform: scale(1);}
+  }
+@keyframes closeWindow {
+    0% {opacity: 1; transform: scale(1);}
+    100% {opacity: 0; transform: scale(0.8);}
+  }
+.fa-check-circle {
+    font-size: 4em;
+    color: #28a745;
+    padding: 20px;
+}
+.feedback-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .form-control {
     margin-bottom: 10px;
 }
@@ -35,7 +54,98 @@
     border: 1px solid red;
 }
 .span-error {
-    display: block;
+    display: flex;
+    justify-content: end;
     color: red;
-    margin: -10px 0 10px 0;
 }
+.feedback-accepted {
+    display: inline-flex;
+    align-items: center;
+}
+.feedback-accepted span {
+    margin: 0;
+    font-size: 1.4em;
+}
+.feedback-rejected {
+    display: inline-flex;
+    align-items: center;
+}
+.feedback-rejected i {
+    font-size: 4em;
+    color: #dc3545;
+    padding: 20px;
+}
+.feedback-rejected span {
+    margin: 0;
+    font-size: 1.4em;
+} 
+  .closeWindow {
+    opacity: 1;
+    animation: closeWindow 0.7s forwards;
+  }
+  .openWindow {
+    opacity: 0;
+    animation: openWindow 0.7s forwards;
+  }
+  .feedback-thanks-container {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1;
+  }
+  .feedback-thanks-modal {
+        justify-content: center;
+        align-self: center;
+        height: fit-content;
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        color: #000;
+        text-align: center;
+        border-radius: 20px;
+        padding: 30px 30px;
+  }
+  .feedback-thanks-modal  button.close {
+      width: 30px;
+      font-size: 20px;
+      color: #c0c5cb;
+      align-self: flex-end;
+      background-color: transparent;
+      border: none;
+      margin-bottom: 10px;
+    }
+    .feedback-thanks-modal p {
+      margin-bottom: 40px;
+      font-size: 18px;
+    }
+    .feedback-thanks-modal button.accept {
+      background-color: #28a745;
+      border: none;
+      border-radius: 5px;
+      width: 200px;
+      padding: 14px;
+      font-size: 16px;
+      color: white;
+      border: 1px solid #28a745;
+    }
+    .feedback-thanks-modal button.accept:hover {
+        background-color: white;
+        color: #28a745;
+    }
+    .btn-success {
+        color: #fff;
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+    .btn-danger {
+        color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    }
