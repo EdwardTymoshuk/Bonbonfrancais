@@ -1,7 +1,5 @@
 //GET ELEMENTS FROM PAGE
 const moreFeedbackBtn = document.querySelector('#more-feedback-btn')
-console.log(localStorageName)
-// const localStorageName = localStorage.getItem('localStorageName')
 
 //DEFINE VARIABLES
 let start = 0
@@ -47,7 +45,7 @@ const acceptFeedback = async (elem) => {
   }
 }
 
-//function to delete feedback 
+//function to reject feedback 
 const rejectFeedback = async (elem) => {
   const { firstName, feedback, _id } = elem
   let url = 'https://bonbonfrancais.herokuapp.com/feedback/'

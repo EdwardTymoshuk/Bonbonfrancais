@@ -1,14 +1,3 @@
-
-// DETECT MOBILE DEVICE
-let isMobileDevice = function () {
-    return ((
-        navigator.userAgent.match(/Android/i) ||
-        navigator.userAgent.match(/BlackBerry/i) ||
-        navigator.userAgent.match(/iPhone|iPad|iPod/i) ||
-        navigator.userAgent.match(/Opera Mini/i) ||
-        navigator.userAgent.match(/IEMobile/i)
-    ) ? true : false);
-}
 //LOGIN 
 //get name from local storage and refirect to index.html
 const headerPanelRow = document.querySelector('.header-navbar')
@@ -16,7 +5,7 @@ const headerPanelRow = document.querySelector('.header-navbar')
 let divEl = document.createElement('div')
 divEl.classList.add('navbar-greating')
 
-let localStorageName = localStorage.getItem('localStorageName')
+const localStorageName = localStorage.getItem('localStorageName')
 localStorageName && (divEl.innerHTML = `<p>Привіт, <strong>${localStorageName}</strong>.</p><button id="logout-btn" class="btn btn-danger logout-btn ">Log out</button>`, headerPanelRow.appendChild(divEl))
 
 const logOut = () => {
@@ -26,80 +15,87 @@ const logOut = () => {
 let logoutBtn = document.querySelector('#logout-btn')
 logoutBtn && logoutBtn.addEventListener('click', logOut)
 
+//SWITCH WEB PAGE LANGUAGE 
+const lang = document.querySelector('#lang-checkbox')
+lang.addEventListener('change', () => {
+    !!lang.checked ? localStorage.setItem('lang', 'en') : localStorage.setItem('lang', 'ua')
+    !!localStorage.getItem('lang') && localStorage.getItem('lang') === 'en' ? (lang.checked = true, window.location.href = 'en/index.html')  : (lang.checked = false, window.location.href = '../index.html')
+})
+
 // HEADER TRANSFORM
 window.addEventListener('scroll', function () {
-    let headerEl = document.getElementById('header-block');
-    let headerBlock = document.getElementById('header-block');
-    let headerPanel = document.getElementById('header-panel');
+    let headerEl = document.getElementById('header-block')
+    let headerBlock = document.getElementById('header-block')
+    let headerPanel = document.getElementById('header-panel')
     for (let i = 0; i <= 100; i += 10) {
         if (pageYOffset >= document.documentElement.clientHeight / (100 / i)) {
-            headerEl.style.background = `rgba(243, 238, 238, 0.${i / 10})`;
-            headerPanel.style.opacity = `.${90 - i}`;
+            headerEl.style.background = `rgba(243, 238, 238, 0.${i / 10})`
+            headerPanel.style.opacity = `.${90 - i}`
         }
         if (pageYOffset >= document.documentElement.clientHeight - headerEl.offsetHeight) {
-            headerEl.style.background = `rgba(243, 238, 238, 1)`;
+            headerEl.style.background = `rgba(243, 238, 238, 1)`
         }
     }
     for (let i = 0; i <= headerPanel.offsetHeight; i += 10) {
         if (pageYOffset >= document.documentElement.clientHeight / (100 / i)) {
-            headerBlock.style.top = `-${i}px`;
+            headerBlock.style.top = `-${i}px`
         }
     }
-});
+})
 
 // BACK TO TOP
-let btt = document.querySelector('#btt');
+let btt = document.querySelector('#btt')
 let home = document.querySelector('#home')
 btt.addEventListener('click', (e) => {
-    e.preventDefault();
-    home.scrollIntoView();
+    e.preventDefault()
+    home.scrollIntoView()
 })
 
 // PAGE BUTTONS
 // FREE LESSON BUTTONS
-const contactForm = document.querySelector('#contact-form');
-const contactMessage = document.getElementById('message');
-let bookLessonsBtns = document.querySelectorAll('.book-lesson-btn');
+const contactForm = document.querySelector('#contact-form')
+const contactMessage = document.getElementById('message')
+let bookLessonsBtns = document.querySelectorAll('.book-lesson-btn')
 
 bookLessonsBtns.forEach(item => {
     item.addEventListener('click', (e) => {
-        e.preventDefault();
-        contactMessage.value = `Доброго дня, я б хотів(-ла) замовити урок французької.`;
-        contactForm.scrollIntoView();
+        e.preventDefault()
+        contactMessage.value = `${pageLang === 'ua' ? `Доброго дня, я б хотів(-ла) замовити урок французької.` : `Hello. I'd like to book a lesson.`}`
+        contactForm.scrollIntoView()
     })
 })
 // ORDER LESSONS BUTTONS
-let firstBlockBtn = document.querySelector('#first-block-btn');
-let secondBlockBtn = document.querySelector('#second-block-btn');
-let thirdBlockBtn = document.querySelector('#third-block-btn');
+let firstBlockBtn = document.querySelector('#first-block-btn')
+let secondBlockBtn = document.querySelector('#second-block-btn')
+let thirdBlockBtn = document.querySelector('#third-block-btn')
 // order first price block
 firstBlockBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    contactMessage.value = `Доброго дня, я б хотів(-ла) замовити курс "Загальна (розмовна) французька".`;
-    contactForm.scrollIntoView();
+    e.preventDefault()
+    contactMessage.value = `${pageLang === 'ua' ? `Доброго дня, я б хотів(-ла) замовити курс "Загальна (розмовна) французька".` : `Hello. I'd like to book a cours "Common (speeking) french".`}`
+    contactForm.scrollIntoView()
 })
 // order second price block
 secondBlockBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    contactMessage.value = `Доброго дня, я б хотів(-ла) замовити курс "Підготовка до іспитів DELF/DALF".`;
-    contactForm.scrollIntoView();
+    e.preventDefault()
+    contactMessage.value = `${pageLang === 'ua' ? `Доброго дня, я б хотів(-ла) замовити курс "Підготовка до іспитів DELF/DALF".` : `Hello. I'd like to book a cours "Prepearing to DELF/DALF exams".`}`
+    contactForm.scrollIntoView()
 })
 // order third price block
 thirdBlockBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    contactMessage.value = `Доброго дня, я б хотів(-ла) замовити курс "Ділова французька".`;
-    contactForm.scrollIntoView();
+    e.preventDefault()
+    contactMessage.value = `${pageLang === 'ua' ? `Доброго дня, я б хотів(-ла) замовити курс "Ділова французька".` : `Hello. I'd like to book a cours "Business french".`}`
+    contactForm.scrollIntoView()
 })
 
-const submitBtn = document.querySelector('#submit');
-const result = document.querySelector('.result');
+const submitBtn = document.querySelector('#submit')
+const result = document.querySelector('.result')
 
 const clearResult = () => {
-    result.innerHTML = '';
+    result.innerHTML = ''
 }
 submitBtn.addEventListener('click', (e) => {
-    e.preventDefault;
-    setTimeout(clearResult, 5000);
+    e.preventDefault
+    setTimeout(clearResult, 5000)
 })
 
 //switch button activity and show load pic

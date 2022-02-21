@@ -138,7 +138,7 @@ const setFeedback = async () => {
   validateInput(firstNameEl, `Ім'я`, 3, 15)
   validateInput(countryEl, `Країна`, 3, 15)
   validateInput(emailEl, `Email`, 3, 30)
-  validateInput(feedbackEl, `Відгук`, 3, 100)
+  validateInput(feedbackEl, `Відгук`, 3, 750)
   validateFeedbackCaptcha()
 
   !!validatedFirstName && !!validatedEmail && !!validatedCountry && !!validatedFeedbackText && !!validatedCaptcha &&

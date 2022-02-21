@@ -55,10 +55,13 @@
             <a href="#home">BonBon</a>
           </div>
           <div id="header-languages" class="header-languages col">
-            <div>
-              <a href="#"><img src="img/flag-ua.png" style="height:3.2em"
-                  onmouseover="this.style.transform='none';" /></a>
-              <a href="en/"><img src="img/flag-uk.png" /></a>
+            <div class="header-languages-container">
+              <span>UA</span>
+              <label class="switch">
+                <input id="lang-checkbox" type="checkbox">
+                <span class="slider round"></span>
+              </label>
+              <span>EN</span>
             </div>
           </div>
         </div>
@@ -414,7 +417,7 @@
               Я дуже задоволений прогресом, бачу результат, тим більше, що уроки з Тетяною це хороше поєднання ціни та
               якості викладання, тому з впевненістю можу рекомендувати її усім."
             </span>
-            <p>2022-09-01</p>
+            <p>2019-06-12</p>
           </div>
         </div>
       </article>
@@ -432,7 +435,7 @@
               I am also very grateful for how accommodating of my work rota, our lessons are at a different time every
               week and I often have to change them at late notice."
             </span>
-            <p>2022-09-01</p>
+            <p>2020-09-07</p>
           </div>
         </div>
       </article>
@@ -455,7 +458,7 @@
               disappointment.
               I consider this to be a sign of a good teacher."
             </span>
-            <p>2022-09-01</p>
+            <p>2021-11-27</p>
           </div>
         </div>
       </article>
@@ -472,7 +475,7 @@
               свои знания.
               Очень рекомендую Татьяну как профессионала своего дела."
             </span>
-            <p>2022-09-01</p>
+            <p>2021-12-12</p>
           </div>
         </div>
       </article>
@@ -481,7 +484,7 @@
       <span class="btn-text">Більше...</span>
     </button>
     <aside class="feedback-modal">
-      <h3>Навчався/навчалася зі мною? Залиш свій вігук!</h3>
+      <h3>Навчався/навчалася зі мною? Залиш свій відгук!</h3>
       <!-- Button trigger modal -->
       <button id="leave-feedback-btn" type="button" class="btn feedback-btn" data-toggle="modal" data-target="#feedback-modal">
         Залишити відгук
@@ -719,7 +722,7 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
   <script src="scripts/contact.min.js"></script>
-  <script src="scripts/layout.min.js"></script>
+  <!-- <script src="scripts/layout.min.js"></script> -->
   <script src="scripts/layout.js"></script>
   <script src="scripts/setFeedback.js"></script>
   <script src="scripts/getFeedback.js"></script>
