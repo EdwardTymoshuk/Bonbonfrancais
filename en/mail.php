@@ -16,11 +16,7 @@
 			$subject = "Message from contact form";
 			$headers = "MIME-Version: 1.0\r\n";
 			$headers .= "Content-type: text/html; charset=utf-8\r\n";
-<<<<<<< HEAD
-			$headers .= "From: Система повідомлень <no-reply@".$_SERVER['HTTP_HOST'].">\r\n";
-=======
 			$headers .= "From: New message from bonbonfrancais.online <no-reply@".$_SERVER['HTTP_HOST'].">\r\n";
->>>>>>> c0c430927e84d940d6887b3d326fca32bd7c31a6
 
 			mail($mail_to, $subject, $message, $headers);
 		
