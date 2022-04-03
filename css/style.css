@@ -3,7 +3,7 @@
 	src: url(../fonts/CODE_Light.otf)
 }
 
-/* MAIN STYLES */
+/* COMMON STYLES */
 html, body {
 	font-size: 14px;
 	overflow-x: hidden;
@@ -61,6 +61,15 @@ html {
 .btn-loading:focus
  {
 	background-color:#6E535B ;
+}
+.input-error {
+    border: 1px solid red;
+}
+.span-error {
+    display: flex;
+	justify-content: end;
+	text-align: end;
+    color: red;
 }
 @keyframes button-loading-spinner {
 	from {
@@ -181,7 +190,6 @@ html {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	/* background-color: #ccc; */
 	background-image: url(../img/flag-ua.png);
 	background-size: 6em;
     background-position: center;
@@ -988,3 +996,56 @@ blockquote:before {
 		font-size: 1em;
 	}
 }
+
+.thanks-container {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1;
+  }
+  .thanks-modal {
+        justify-content: center;
+        align-self: center;
+        height: fit-content;
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        color: #000;
+        text-align: center;
+        border-radius: 20px;
+        padding: 30px 30px;
+  }
+  .thanks-modal  button.close {
+      width: 30px;
+      font-size: 20px;
+      color: #c0c5cb;
+      align-self: flex-end;
+      background-color: transparent;
+      border: none;
+      margin-bottom: 10px;
+    }
+    .thanks-modal p {
+      margin-bottom: 40px;
+      font-size: 18px;
+    }
+    .thanks-modal button.accept {
+      background-color: #28a745;
+      border: none;
+      border-radius: 5px;
+      width: 200px;
+      padding: 14px;
+      font-size: 16px;
+      color: white;
+      border: 1px solid #28a745;
+    }
+    .thanks-modal button.accept:hover {
+        background-color: white;
+        color: #28a745;
+    }
