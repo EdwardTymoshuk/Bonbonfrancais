@@ -30,8 +30,25 @@
   <link href="https://fonts.googleapis.com/css?family=Yeseva+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-
-  <script src="https://www.google.com/recaptcha/api.js"></script>
+   <!-- SCRIPTS -->
+   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+     crossorigin="anonymous" async></script>
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+     crossorigin="anonymous " async></script>
+   <!-- <script src="scripts/contact.min.js" async></script> -->
+   <!-- <script src="scripts/layout.min.js" defer></script> -->
+   <script src="scripts/login.js" defer></script>
+   <script src="scripts/layout.js" defer></script>
+   <script src="scripts/contact.js" defer></script>
+   <script src="scripts/setFeedback.js" defer></script>
+   <script src="scripts/getFeedback.js" defer></script>
+   </script>
+   
 </head>
 
 <body id="body" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -505,22 +522,22 @@
               <form id="modal-form" method="POST">
                 <div class="form-group">
                   <label for="firstName">Ім'я</label>
-                  <input id="feedback-firstName" name="firstName" required type="text"
+                  <input id="feedback-firstName" name="feedback-firstName" required type="text"
                     class="form-control input-control" placeholder="Введи своє ім'я" />
                   <span id="feedback-firstName-error" class="span-error"></span>
 
-                  <label for="email">Email адресса</label>
-                  <input id="feedback-email" name="email" required type="email" class="form-control input-control"
+                  <label for="email">Email</label>
+                  <input id="feedback-email" name="feedback-email" required type="email" class="form-control input-control"
                     placeholder="Введи свою email адресу" />
                   <span id="feedback-email-error" class="span-error"></span>
 
-                  <label for="country">Країна</label>
-                  <input id="feedback-country" name="country" required type="country" class="form-control input-control"
+                  <label for="feedback-country">Країна</label>
+                  <input id="feedback-country" name="feedback-country" required type="country" class="form-control input-control"
                     placeholder="Введи свою країну" />
                   <span id="feedback-country-error" class="span-error"></span>
 
-                  <label for="photo">Відгук</label>
-                  <textarea id="feedback-textarea" name="textarea" required type="text"
+                  <label for="feedback-message">Відгук</label>
+                  <textarea id="feedback-textarea" name="feedback-message" required type="text"
                     class="form-control input-control feedback-modal-textarea" rows="5" resize="none"
                     placeholder="Напиши свій відгук"></textarea>
                   <span id="feedback-textarea-error" class="span-error"></span>
@@ -634,13 +651,12 @@
     <header class="header">
       <h2>Як зі мною зв'язатися ?</h2>
     </header>
-    <div class="contact-container container-fluid">
+    <div id="contact-container" class="contact-container container-fluid">
       <article class="row">
         <div class="contact-article col-12">
           <span>
             Для того, щоб дізнатися більше про вивчення французької онлайн через скайп,
-            Ви можете зв'язатися зі мною через соц. мережі або просто залишити заявку у формі нижче.
-
+            можеш зв'язатися зі мною через соц. мережі або надіслати повідомлення за допомогою форми нижче.
           </span>
         </div>
       </article>
@@ -663,31 +679,33 @@
             </div>
           </div>
         </aside>
-        <form id="contact-form" class="contact-form col-12 col-md-8">
+        <form id="contact-form" class="contact-form col-12 col-md-8" method="POST">
           <div class="form-group container-fluid">
             <div class="row">
-              <label class="col-12" for="name">Ім'я:</label>
-              <input class="col-12" type="text" name="name" id="name" value="" />
+              <label class="col-12" for="name">Ім'я</label>
+              <input id="contact-firstName" class="col-12" type="text" name="contact-name" value="" />
+              <span id="contact-firstName-error" class="span-error col-12"></span>
             </div>
           </div>
           <div class="form-group container-fluid">
             <div class="row">
-              <label class="col-12" for="email">E-mail:</label>
-              <input class="col-12" type="text" name="email" id="email" value="" />
+              <label class="col-12" for="email">E-mail</label>
+              <input id="contact-email" class="col-12" type="email" name="contact-email" value="" />
+              <span id="contact-email-error" class="span-error col-12"></span>
             </div>
           </div>
           <div class="form-group container-fluid">
             <div class="row">
-              <label class="col-12" for="message">Повідомлення:</label>
-              <textarea class="col-12" name="message" id="message" rows="12"></textarea>
+              <label class="col-12" for="message">Повідомлення</label>
+              <textarea id="contact-message" class="col-12" type="text" name="contact-message" rows="12"></textarea>
+              <span id="contact-message-error" class="span-error col-12"></span>
             </div>
           </div>
           <div class="container-fluid">
-            <div class="row">
-              <div class="result col-12"></div>
-            </div>
+            <div id="contact-captcha" class="feedback-captcha g-recaptcha" data-sitekey="6LfxljAeAAAAANzd8VHRUTCCCdue0iBWf-nmOe6Z"></div>
+                  <span id="contact-captcha-error" class="span-error"></span>
           </div>
-          <button class="btn contact-btn"><a href="javascript: void(0);" id="submit">Відправити</a></button>
+          <button id="send-contact-button" class="btn contact-btn">Відправити</button>
         </form>
       </article>
     </div>
@@ -699,7 +717,6 @@
     <div class="row">
       <aside class="col-md-4 text-left">
         <span>2019@Bonbonfrancais.online</span>
-        <button id="btn-footer" class="btn btn-footer"><span class="btn-text">Zalupa</span></button>
       </aside>
       <aside class="col-md-4 text-center">
         <span>Сторінку розробив <a href="https://github.com/EdwardTymoshuk" target="_blank">Edward T</a></span>
@@ -710,22 +727,6 @@
     </div>
   </footer>
   <!-- /END OF FOOTER -->
-
-  <!-- SCRIPTS -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <script src="scripts/contact.min.js"></script>
-  <!-- <script src="scripts/layout.min.js"></script> -->
-  <script src="scripts/layout.js"></script>
-  <script src="scripts/setFeedback.js"></script>
-  <script src="scripts/getFeedback.js"></script>
   <!-- PHP files -->
   <?php 
   include(mail.php)
