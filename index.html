@@ -42,11 +42,11 @@
      crossorigin="anonymous " async></script>
    <!-- <script src="scripts/contact.min.js" async></script> -->
    <!-- <script src="scripts/layout.min.js" defer></script> -->
-   <script src="scripts/login.js" defer></script>
-   <script src="scripts/layout.js" defer></script>
-   <script src="scripts/contact.js" defer></script>
-   <script src="scripts/setFeedback.js" defer></script>
-   <script src="scripts/getFeedback.js" defer></script>
+   <script src="scripts/login.js" async defer></script>
+   <script src="scripts/layout.js" async defer></script>
+   <script src="scripts/setFeedback.js" async defer></script>
+   <script src="scripts/getFeedback.js" async defer></script>
+   <script src="scripts/contact.js" async defer></script>
    </script>
    
 </head>
@@ -702,8 +702,8 @@
             </div>
           </div>
           <div class="container-fluid">
-            <div id="contact-captcha" class="feedback-captcha g-recaptcha" data-sitekey="6LfxljAeAAAAANzd8VHRUTCCCdue0iBWf-nmOe6Z"></div>
-                  <span id="contact-captcha-error" class="span-error"></span>
+            <div id="contact-captcha" class="contact-captcha g-recaptcha" data-sitekey="6LfxljAeAAAAANzd8VHRUTCCCdue0iBWf-nmOe6Z"></div>
+            <span id="contact-captcha-error" class="span-error"></span>
           </div>
           <button id="send-contact-button" class="btn contact-btn">Відправити</button>
         </form>

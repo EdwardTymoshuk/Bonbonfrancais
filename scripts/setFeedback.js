@@ -16,7 +16,7 @@ const feedbackCaptcha = document.querySelector('#feedback-captcha')
 let validatedFeedbackFirstName, validatedFeedbackEmail, validatedFeedbackCountry, validatedFeedbackText, validatedFeedbackCaptcha
 
 //ADD ATTRIBUTES TO PAGE ELLEMENTS
-feedbackCaptcha.setAttribute('data-callback', 'validateFeedbackCaptcha')
+feedbackCaptcha.setAttribute('data-callback', ' validateFeedbackCaptcha')
 feedbackCaptcha.setAttribute('data-expired-callback', 'grecaptcha.reset()')
 
 
@@ -63,16 +63,6 @@ const acceptModal = () => {
 //   return validated
 // }
 
-//captcha validation
-const validateFeedbackCaptcha = async () => {
-  let captcha = await grecaptcha.getResponse()
-  captcha !== '' ?
-    (feedbackCaptcha.nextSibling.nextSibling.innerHTML = ``, validatedFeedbackCaptcha = true) :
-    (feedbackCaptcha.nextSibling.nextSibling.innerHTML = `Підтвердіть будь ласка, що ви не робот.`, validatedFeedbackCaptcha = false)
-}
-
-window.validateFeedbackCaptcha = validateFeedbackCaptcha
-
 //reset validated variables
 const resetValidatedVariables = () => {
   validatedFeedbackFirstName = validatedFeedbackEmail = validatedFeedbackCountry = validatedFeedbackText = validatedFeedbackCaptcha = false
@@ -96,6 +86,16 @@ countryEl.addEventListener('change', e => {
 feedbackEl.addEventListener('change', e => {
   validateInput(e.currentTarget, `Відгук`, 3, 1000) ? validatedFeedbackText = true : validatedFeedbackText = false
 })
+
+//captcha validation
+const validateFeedbackCaptcha = async () => {
+  let captcha = await grecaptcha.getResponse(0)
+  captcha !== '' ?
+    (feedbackCaptcha.nextSibling.nextSibling.innerHTML = ``, validatedFeedbackCaptcha = true) :
+    (feedbackCaptcha.nextSibling.nextSibling.innerHTML = `Підтвердіть будь ласка, що ви не робот.`, validatedFeedbackCaptcha = false)
+}
+
+  window.validateFeedbackCaptcha = validateFeedbackCaptcha
 
 //SEND REQUEST TO API TO SET NEW FEEDBACK
 const setFeedbackAPI = async (firstName, country, email, feedback, date) => {

@@ -81,11 +81,6 @@ const acceptMail = () => {
     `
     contactPage.appendChild(modalWindow)
   }
-// const result = document.querySelector('.result')
-
-// const clearResult = () => {
-//     result.innerHTML = ''
-// }
 
 //SWITCH BUTTON ACTIVITY AND SHOW LOAD PICTURE
 const loadingBtnToggle = (boolean, btn) => {

@@ -753,12 +753,12 @@ html {
 	text-decoration: none;
 	color: inherit;
 }
-.result {
-	line-height: 1.5em;
-	height: 50px;
-	font-family: 'Podkova', serif;
-	-webkit-transition: all ease .3s;
-	transition: all ease .3s;
+.contact-captcha {
+	margin-bottom: 10px;
+	padding-top: 20px;
+    display: flex;
+	justify-content: flex-end;
+	margin-right: -15px;
 }
 /* FOOTER */
 .footer {
