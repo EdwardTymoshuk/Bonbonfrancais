@@ -13,7 +13,7 @@ const feedbackCaptcha = document.querySelector('#feedback-captcha')
 
 
 //DEFINE GLOBAL VARIABLES
-let validatedFirstName, validatedEmail, validatedCountry, validatedFeedbackText, validatedCaptcha
+let validatedFeedbackFirstName, validatedFeedbackEmail, validatedFeedbackCountry, validatedFeedbackText, validatedFeedbackCaptcha
 
 //ADD ATTRIBUTES TO PAGE ELLEMENTS
 feedbackCaptcha.setAttribute('data-callback', 'validateFeedbackCaptcha')
@@ -34,14 +34,14 @@ const removeElement = (el) => {
 
 const acceptModal = () => {
   let modalWindow = document.createElement('div')
-  modalWindow.setAttribute('id', 'feedback-thanks-container')
-  modalWindow.classList.add('container', 'openWindow', 'feedback-thanks-container')
+  modalWindow.setAttribute('id', 'thanks-container')
+  modalWindow.classList.add('container', 'openWindow', 'thanks-container')
   modalWindow.innerHTML = `
-  <div class="feedback-thanks-modal" id="feedback-thanks-modal">
-  <button id="close-thanks-modal-btn" class="close" onclick="removeElement('feedback-thanks-container')">✖</button>
+  <div class="thanks-modal" id="thanks-modal">
+  <button id="close-thanks-modal-btn" class="close" onclick="removeElement('thanks-container')">✖</button>
   <i class="fas fa-check-circle"></i>
   <p>Твій відгук успішно додано.</p>
-  <button id="great-thanks-modal-btn" class="btn feedback-btn" onclick="removeElement('feedback-thanks-container')">Чудово!</button>
+  <button id="great-thanks-modal-btn" class="btn feedback-btn" onclick="removeElement('thanks-container')">Чудово!</button>
 </div>
   `
   feedbackArticles.appendChild(modalWindow)
@@ -49,52 +49,52 @@ const acceptModal = () => {
 }
 
 //INPUT VALIDATION
-//email validation
-const validateEmail = (email) => {
-  !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) && (emailEl.classList.add('input-error'), emailEl.nextSibling.nextSibling.innerHTML = `Будь ласка введіть email адресу у правильному форматі "example@example.com"`)
-}
+// //email validation
+// const validateEmail = (emailEl) => {
+//   !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailEl.value) ? (emailEl.classList.add('input-error'), emailEl.nextSibling.nextSibling.innerHTML = `Будь ласка введіть email адресу у правильному форматі "example@example.com"`, validatedFeedbackEmail = false) : validatedFeedbackEmail = true
+// }
 
-//input validation
-const validateInput = (input, fieldName, min, max) => {
-  let validated
-  !input.value ? (input.classList.add('input-error'), input.nextSibling.nextSibling.innerHTML = `Поле ${fieldName} є обов'язковим`) :
-    input.value.length < min ? (input.classList.add('input-error'), input.nextSibling.nextSibling.innerHTML = `Поле ${fieldName} не може бути коротше, ніж ${min} символи(-ів)`) :
-      input.value.length > max ? (input.classList.add('input-error'), input.nextSibling.nextSibling.innerHTML = `Поле ${fieldName} не може бути довше, ніж ${max} символи(-ів)`) : (input.classList.remove('input-error'), input.nextSibling.nextSibling.innerHTML = ``, validated = true)
-  return validated
-}
+// //input validation
+// const validateInput = (input, fieldName, min, max) => {
+//   let validated
+//   !input.value ? (input.classList.add('input-error'), input.nextSibling.nextSibling.innerHTML = `Поле ${fieldName} є обов'язковим`) :
+//     input.value.length < min ? (input.classList.add('input-error'), input.nextSibling.nextSibling.innerHTML = `Поле ${fieldName} не може бути коротше, ніж ${min} символи(-ів)`) :
+//       input.value.length > max ? (input.classList.add('input-error'), input.nextSibling.nextSibling.innerHTML = `Поле ${fieldName} не може бути довше, ніж ${max} символи(-ів)`) : (input.classList.remove('input-error'), input.nextSibling.nextSibling.innerHTML = ``, validated = true)
+//   return validated
+// }
 
 //captcha validation
 const validateFeedbackCaptcha = async () => {
   let captcha = await grecaptcha.getResponse()
   captcha !== '' ?
-    (feedbackCaptcha.nextSibling.nextSibling.innerHTML = ``, validatedCaptcha = true) :
-    (feedbackCaptcha.nextSibling.nextSibling.innerHTML = `Підтвердіть будь ласка, що ви не робот.`, validatedCaptcha = false)
+    (feedbackCaptcha.nextSibling.nextSibling.innerHTML = ``, validatedFeedbackCaptcha = true) :
+    (feedbackCaptcha.nextSibling.nextSibling.innerHTML = `Підтвердіть будь ласка, що ви не робот.`, validatedFeedbackCaptcha = false)
 }
 
 window.validateFeedbackCaptcha = validateFeedbackCaptcha
 
 //reset validated variables
 const resetValidatedVariables = () => {
-  validatedFirstName = validatedEmail = validatedCountry = validatedFeedbackText = validatedCaptcha = false
+  validatedFeedbackFirstName = validatedFeedbackEmail = validatedFeedbackCountry = validatedFeedbackText = validatedFeedbackCaptcha = false
 }
 
 //input onChange validation
 //first name validation
 firstNameEl.addEventListener('change', e => {
-  validateInput(e.currentTarget, `Ім'я`, 3, 15) ? validatedFirstName = true : validatedFirstName = false
+  validateInput(e.currentTarget, `Ім'я`, 3, 30) ? validatedFeedbackFirstName = true : validatedFeedbackFirstName = false
 })
 //email validation
 emailEl.addEventListener('change', e => {
-  validateInput(e.currentTarget, `Email`, 3, 30) ? validatedEmail = true : validatedEmail = false
-  validateEmail(emailEl.value)
+  validateInput(e.currentTarget, `Email`, 3, 45) ? validatedFeedbackEmail = true : validatedFeedbackEmail = false
+  validateEmail(emailEl)
 })
 //country validation
 countryEl.addEventListener('change', e => {
-  validateInput(e.currentTarget, `Країна`, 3, 15) ? validatedCountry = true : validatedCountry = false
+  validateInput(e.currentTarget, `Країна`, 3, 30) ? validatedFeedbackCountry = true : validatedFeedbackCountry = false
 })
 //feedback text validation
 feedbackEl.addEventListener('change', e => {
-  validateInput(e.currentTarget, `Відгук`, 3, 750) ? validatedFeedbackText = true : validatedFeedbackText = false
+  validateInput(e.currentTarget, `Відгук`, 3, 1000) ? validatedFeedbackText = true : validatedFeedbackText = false
 })
 
 //SEND REQUEST TO API TO SET NEW FEEDBACK
@@ -138,10 +138,11 @@ const setFeedback = async () => {
   validateInput(firstNameEl, `Ім'я`, 3, 15)
   validateInput(countryEl, `Країна`, 3, 15)
   validateInput(emailEl, `Email`, 3, 30)
+  validateEmail(emailEl)
   validateInput(feedbackEl, `Відгук`, 3, 750)
   validateFeedbackCaptcha()
 
-  !!validatedFirstName && !!validatedEmail && !!validatedCountry && !!validatedFeedbackText && !!validatedCaptcha &&
+  !!validatedFeedbackFirstName && !!validatedFeedbackEmail && !!validatedFeedbackCountry && !!validatedFeedbackText && !!validatedFeedbackCaptcha &&
     (loadingBtnToggle(true, sendButton),
 
       await setFeedbackAPI(firstName, country, email, feedback, date).then(res => {

@@ -1,20 +1,3 @@
-//LOGIN 
-//get name from local storage and refirect to index.html
-const headerPanelRow = document.querySelector('.header-navbar')
-
-let divEl = document.createElement('div')
-divEl.classList.add('navbar-greating')
-
-const localStorageName = localStorage.getItem('localStorageName')
-localStorageName && (divEl.innerHTML = `<p>Привіт, <strong>${localStorageName}</strong>.</p><button id="logout-btn" class="btn btn-danger logout-btn ">Log out</button>`, headerPanelRow.appendChild(divEl))
-
-const logOut = () => {
-    localStorage.removeItem('localStorageName')
-    window.location.href = './index.html'
-}
-let logoutBtn = document.querySelector('#logout-btn')
-logoutBtn && logoutBtn.addEventListener('click', logOut)
-
 //SWITCH WEB PAGE LANGUAGE 
 const lang = document.querySelector('#lang-checkbox')
 lang.addEventListener('change', () => {
@@ -22,7 +5,7 @@ lang.addEventListener('change', () => {
     !!localStorage.getItem('lang') && localStorage.getItem('lang') === 'en' ? (lang.checked = true, window.location.href = 'en/index.html')  : (lang.checked = false, window.location.href = '../index.html')
 })
 
-// HEADER TRANSFORM
+//HEADER TRANSFORM
 window.addEventListener('scroll', function () {
     let headerEl = document.getElementById('header-block')
     let headerBlock = document.getElementById('header-block')
@@ -43,6 +26,75 @@ window.addEventListener('scroll', function () {
     }
 })
 
+//PAGES BUTTONS
+//free lesson button
+const contactForm = document.querySelector('#contact-form')
+const contactMessage = document.querySelector('#contact-message')
+const bookLessonBtns = document.querySelectorAll('.book-lesson-btn')
+
+bookLessonBtns.forEach(item => {
+    item.addEventListener('click', (e) => {
+        e.preventDefault()
+        contactMessage.value = `${pageLang === 'ua' ? `Доброго дня, я б хотів(-ла) замовити урок французької.` : `Hello. I'd like to book a lesson.`}`
+        contactForm.scrollIntoView()
+    })
+})
+
+//Order lessons buttons
+const firstBlockBtn = document.querySelector('#first-block-btn')
+const secondBlockBtn = document.querySelector('#second-block-btn')
+const thirdBlockBtn = document.querySelector('#third-block-btn')
+//order first price block
+firstBlockBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    contactMessage.value = `${pageLang === 'ua' ? `Доброго дня, я б хотів(-ла) замовити курс "Загальна (розмовна) французька".` : `Hello. I'd like to book a cours "Common (speeking) french".`}`
+    contactForm.scrollIntoView()
+})
+//order second price block
+secondBlockBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    contactMessage.value = `${pageLang === 'ua' ? `Доброго дня, я б хотів(-ла) замовити курс "Підготовка до іспитів DELF/DALF".` : `Hello. I'd like to book a cours "Prepearing to DELF/DALF exams".`}`
+    contactForm.scrollIntoView()
+})
+//order third price block
+thirdBlockBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    contactMessage.value = `${pageLang === 'ua' ? `Доброго дня, я б хотів(-ла) замовити курс "Ділова французька".` : `Hello. I'd like to book a cours "Business french".`}`
+    contactForm.scrollIntoView()
+})
+
+
+const sendContactButton = document.querySelector('#send-contact-button')
+const contactPage = document.querySelector('#contact')
+
+const acceptMail = () => {
+    let modalWindow = document.createElement('div')
+    modalWindow.setAttribute('id', 'thanks-container')
+    modalWindow.classList.add('container', 'openWindow', 'thanks-container')
+    modalWindow.innerHTML = `
+    <div class="thanks-modal" id="thanks-modal">
+    <button id="close-thanks-modal-btn" class="close" onclick="removeElement('thanks-container')">✖</button>
+    <i class="fas fa-check-circle"></i>
+    <p>Твоє повідомлення успішно відправлено. Гарного дня!</p>
+    <button id="great-thanks-modal-btn" class="btn feedback-btn" onclick="removeElement('thanks-container')">Чудово!</button>
+  </div>
+    `
+    contactPage.appendChild(modalWindow)
+  }
+// const result = document.querySelector('.result')
+
+// const clearResult = () => {
+//     result.innerHTML = ''
+// }
+
+//SWITCH BUTTON ACTIVITY AND SHOW LOAD PICTURE
+const loadingBtnToggle = (boolean, btn) => {
+    btn.classList.toggle('btn-loading')
+    boolean === true ?
+        btn.setAttribute("disabled", "true") :
+        btn.removeAttribute("disabled")
+}
+
 // BACK TO TOP
 let btt = document.querySelector('#btt')
 let home = document.querySelector('#home')
@@ -51,57 +103,22 @@ btt.addEventListener('click', (e) => {
     home.scrollIntoView()
 })
 
-// PAGE BUTTONS
-// FREE LESSON BUTTONS
-const contactForm = document.querySelector('#contact-form')
-const contactMessage = document.getElementById('message')
-let bookLessonsBtns = document.querySelectorAll('.book-lesson-btn')
+//email validation
+const validateEmail = (emailEl) => {
+    !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailEl.value) ? (emailEl.classList.add('input-error'), emailEl.nextSibling.nextSibling.innerHTML = `Будь ласка введіть email адресу у правильному форматі "example@example.com"`, validatedFeedbackEmail = false) : validatedFeedbackEmail = true
+  }
 
-bookLessonsBtns.forEach(item => {
-    item.addEventListener('click', (e) => {
-        e.preventDefault()
-        contactMessage.value = `${pageLang === 'ua' ? `Доброго дня, я б хотів(-ла) замовити урок французької.` : `Hello. I'd like to book a lesson.`}`
-        contactForm.scrollIntoView()
-    })
-})
-// ORDER LESSONS BUTTONS
-let firstBlockBtn = document.querySelector('#first-block-btn')
-let secondBlockBtn = document.querySelector('#second-block-btn')
-let thirdBlockBtn = document.querySelector('#third-block-btn')
-// order first price block
-firstBlockBtn.addEventListener('click', (e) => {
-    e.preventDefault()
-    contactMessage.value = `${pageLang === 'ua' ? `Доброго дня, я б хотів(-ла) замовити курс "Загальна (розмовна) французька".` : `Hello. I'd like to book a cours "Common (speeking) french".`}`
-    contactForm.scrollIntoView()
-})
-// order second price block
-secondBlockBtn.addEventListener('click', (e) => {
-    e.preventDefault()
-    contactMessage.value = `${pageLang === 'ua' ? `Доброго дня, я б хотів(-ла) замовити курс "Підготовка до іспитів DELF/DALF".` : `Hello. I'd like to book a cours "Prepearing to DELF/DALF exams".`}`
-    contactForm.scrollIntoView()
-})
-// order third price block
-thirdBlockBtn.addEventListener('click', (e) => {
-    e.preventDefault()
-    contactMessage.value = `${pageLang === 'ua' ? `Доброго дня, я б хотів(-ла) замовити курс "Ділова французька".` : `Hello. I'd like to book a cours "Business french".`}`
-    contactForm.scrollIntoView()
-})
+//input validation
+const validateInput = (input, fieldName, min, max) => {
+    let validated
+    !input.value ? (input.classList.add('input-error'), input.nextElementSibling.innerHTML = `Поле ${fieldName} є обов'язковим`) :
+      input.value.length < min ? (input.classList.add('input-error'), input.nextElementSibling.innerHTML = `Поле ${fieldName} не може бути коротше, ніж ${min} символи(-ів)`) :
+        input.value.length > max ? (input.classList.add('input-error'), input.nextElementSibling.innerHTML = `Поле ${fieldName} не може бути довше, ніж ${max} символи(-ів)`) : (input.classList.remove('input-error'), input.nextSibling.nextSibling.innerHTML = ``, validated = true)
+    return validated
+  }
 
-const submitBtn = document.querySelector('#submit')
-const result = document.querySelector('.result')
+let arr = document.querySelectorAll('[id^="contact"]');
+// let txt = document.getElementsByTagName('textarea');
 
-const clearResult = () => {
-    result.innerHTML = ''
-}
-submitBtn.addEventListener('click', (e) => {
-    e.preventDefault
-    setTimeout(clearResult, 5000)
-})
-
-//switch button activity and show load pic
-const loadingBtnToggle = (boolean, btn) => {
-    btn.classList.toggle('btn-loading')
-    boolean === true ?
-        btn.setAttribute("disabled", "true") :
-        btn.removeAttribute("disabled")
-}
+// [...arr].map(v => !!v.name && (v.name !== 'g-recaptcha-response' && v.nodeName === 'INPUT' ? console.log(v.previousElementSibling.innerHTML) : console.log(v.name) ))
+[...arr].map(v => !!v.name &&console.log(v.type))
