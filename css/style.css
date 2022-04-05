@@ -899,7 +899,7 @@ blockquote:before {
 		font-size: 1.2em;
 	}
 	.header-logo {
-		display: none;
+		visibility: hidden;
 		font-size: 2em;
 		align-self: center;
 	}
@@ -924,6 +924,13 @@ blockquote:before {
 	}
 	.header-languages img{
 		height: 2em;
+	}
+	.navbar-greeting {
+		position: absolute;
+		text-align: center;
+		right: 20px;
+		display: grid;
+		align-self: center;
 	}
 	.home{
 		background-attachment: scroll;
