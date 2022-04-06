@@ -1,25 +1,15 @@
 //GET ELEMENTS FROM PAGE
-const headerPanelRow = document.querySelector('.header-navbar')
-const logoutBtn = document.querySelector('#logout-btn')
-const loginButton = document.querySelector("#login-button")
+//Login button
+const loginBtn = document.querySelector("#login-button")
 
-//CREATE NAVBAR GREETING DIV ELEMENT AND ADD STYLE
-const navbarGreeting = document.createElement('div')
-navbarGreeting.classList.add('navbar-greeting')
-
-//GET NAME FROM LOCAL STORAGE AND PUT IT TO NAVBAR GREETING DIV
-let localStorageName = localStorage.getItem('localStorageName')
-localStorageName && (navbarGreeting.innerHTML = `<p>Привіт, <strong>${localStorageName}</strong>.</p><button id="logout-btn" class="btn btn-danger logout-btn ">Log out</button>`, headerPanelRow.appendChild(navbarGreeting))
-
-//MAIN FUNCTIONS
-//login function
+//LOGIN FUNCTION
 const login = async () => {
     const username = document.querySelector("#username").value;
     const password = document.querySelector("#password").value;
 
     const data = {
         'email': username,
-        'password': password
+        password
     }
     const settings = {
         method: 'POST',
@@ -33,32 +23,20 @@ const login = async () => {
     try {
         await fetch(`https://bonbonfrancais.herokuapp.com/admin-panel/login`, settings).then(res => {
             res.status !== 200 &&
-            log('Looks like there was a problem. Status Code: ' + res.status)
+                log('Looks like there was a problem. Status Code: ' + res.status)
             return res.json()
-    }).then(data => {
-                localStorage.setItem("localStorageName", data.name)
-                window.location.href = './index.html'
-    })
+        }).then(data => {
+            localStorage.setItem("localStorageName", data.name)
+            window.location.href = './index.html'
+        })
     } catch (err) {
         return err
     }
     return false
 }
 
-//logout function
-const logout = () => {
-    localStorage.removeItem('localStorageName')
-    window.location.href = './index.html'
-}
-
-//ADD ONCLICK EVENT LISTENERS TO LOGIN AND LOGOUT BUTTONS
-//login button
-loginButton.addEventListener("click", (e) => {
+//ADD CLICK EVENT TO LOGIN BUTTON
+loginBtn.addEventListener("click", (e) => {
     e.preventDefault()
     login()
 })
-
-//logout button
-logoutBtn && logoutBtn.addEventListener('click', logout)
-
-

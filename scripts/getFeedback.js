@@ -1,21 +1,13 @@
 //GET ELEMENTS FROM PAGE
 const moreFeedbackBtn = document.querySelector('#more-feedback-btn')
 
-//DEFINE VARIABLES
-let start = 0
-let end = start + 4
+//DEFINE AND SET VARIABLES
+let listStart = 0
+let listEnd = listStart + 4
 let listLength
 
-//DEFINE FUNCTIONS
-//Helpful Functions
-//increase start and end of the 
-const increaseStartEnd = () => {
-  start += 4
-  end += 4
-}
-
-//Main Functions
-//accept feedback
+//MAIN FUNCTIONS
+//Accept feedback
 const acceptFeedback = async (elem) => {
   const { firstName, email, country, feedback, date, accepted, _id } = elem
   const data = {
@@ -41,11 +33,11 @@ const acceptFeedback = async (elem) => {
       document.querySelector(`#feedback-btns-${_id}`).innerHTML = `<div class="feedback-accepted"><i class="fas fa-check-circle"></i><span>Коментар від "${firstName}" з текстом "${feedback}" успішно затвердженно.</span></div>`
     })
   } catch (err) {
-    console.log(err)
+    console.warn(err)
   }
 }
 
-//function to reject feedback 
+//Reject feedback 
 const rejectFeedback = async (elem) => {
   const { firstName, feedback, _id } = elem
   let url = 'https://bonbonfrancais.herokuapp.com/feedback/'
@@ -62,11 +54,11 @@ const rejectFeedback = async (elem) => {
       document.querySelector(`#feedback-btns-${_id}`).innerHTML = `<div class="feedback-rejected"><i class="fas fa-times-circle"></i><span>Коментар від "${firstName}" з текстом "${feedback}" успішно видаленно.</span></div>`
     })
   } catch (err) {
-    console.log(err)
+    console.warn(err)
   }
 }
 
-//Function to get feedback from API
+//Get feedback API
 const getFeedbackAPI = async (acceptToggle) => {
   const settings = {
     method: 'GET',
@@ -76,7 +68,7 @@ const getFeedbackAPI = async (acceptToggle) => {
       'Access-Control-Allow-Origin': '*'
     }
   }
-  let data = { start, end }
+  let data = { listStart, listEnd }
   let url = new URL('https://bonbonfrancais.herokuapp.com/feedback/' + acceptToggle)
   for (let k in data) { url.searchParams.append(k, data[k]) }
   try {
@@ -122,7 +114,7 @@ const getFeedbackAPI = async (acceptToggle) => {
     console.warn(err)
   }
 }
-//Get feedback function
+//Get feedback 
 const getFeedback = async () => {
   loadingBtnToggle(true, moreFeedbackBtn)
 
@@ -134,7 +126,14 @@ const getFeedback = async () => {
 
   loadingBtnToggle(false, moreFeedbackBtn)
   increaseStartEnd()
-
 }
 
+//ADDITIONAL FUNCTIONS
+//Increase start and end of feedback list
+const increaseStartEnd = () => {
+  listStart += 4
+  listEnd += 4
+}
+
+//ADD CLICK EVENT TO MORE FEEDBACK BUTTON
 moreFeedbackBtn.addEventListener('click', () => getFeedback())

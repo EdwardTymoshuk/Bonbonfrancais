@@ -12,8 +12,4 @@ Allow: /img/
 Disallow: /scripts/
 Disallow: /css/
 Disallow: /mail.php
-<<<<<<< HEAD
 Host: http://bonbonfrancais.online/
-=======
-Host: https://tatalessons.tk
->>>>>>> c0c430927e84d940d6887b3d326fca32bd7c31a6

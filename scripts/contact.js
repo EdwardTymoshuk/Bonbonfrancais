@@ -4,42 +4,31 @@ const contactFirstNameEl = document.querySelector('#contact-firstName')
 const contactEmailEl = document.querySelector('#contact-email')
 const contactMessageEl = document.querySelector('#contact-message')
 const contactCaptcha = document.querySelector('#contact-captcha')
+const sendContactBtn = document.querySelector('#send-contact-button')
 
-
-//DEFINE GLOBAL VARIABLES
-//define variables for validation and set defaut value to false
+//DEFINE VARIABLES FOR VALIDATION AND SET DEFAUT VALUE TO FALSE
 let validatedContactFirstName = validatedContactEmail = validatedContactMessage = validatedContactCaptcha = false
 
-//ADD ATTRIBUTES TO PAGE ELLEMENTS
+//SET ATTRIBUTES FOR PAGE ELLEMENTS
 contactCaptcha.setAttribute('data-callback', 'validateContactCaptcha')
 contactCaptcha.setAttribute('data-expired-callback', 'grecaptcha.reset()')
 
-//INPUTs ONCHANGE VALIDATION
-//first name validation
+//INPUT`S ONCHANGE VALIDATION
+//First name validation
 contactFirstNameEl.addEventListener('change', e => {
   validateInput(e.currentTarget, `Ім'я`, 3, 30) ? validatedContactFirstName = true : validatedContactFirstName = false
 })
 
-//email validation
+//Email validation
 contactEmailEl.addEventListener('change', e => {
   validateInput(e.currentTarget, `Email`, 3, 30) ? validatedContactFirstName = true : validatedContactEmail = false
   validateEmail(contactEmailEl)
 })
 
-//contact message validation
+//Contact message validation
 contactMessageEl.addEventListener('change', e => {
   validateInput(e.currentTarget, `Повідомлення`, 10, 1000) ? validatedContactMessage = true : validatedContactMessage = false
 })
-
-//captcha validation
-const validateContactCaptcha = async () => {
-  let captcha = await grecaptcha.getResponse(1)
-  captcha !== '' ?
-    (contactCaptcha.nextSibling.nextSibling.innerHTML = ``, validatedContactCaptcha = true) :
-    (contactCaptcha.nextSibling.nextSibling.innerHTML = `Підтвердіть будь ласка, що ви не робот.`, validatedContactCaptcha = false)
-}
-
-  window.validateContactCaptcha = validateContactCaptcha
 
 //MAIN FUNCTIONS
 //API to send contact form`s data
@@ -69,7 +58,6 @@ const sendContactMessageAPI = async (firstName, email, message) => {
 //Send message from contact form function
 const sendContactMessage = () => {
 
-  //input validation
   validateInput(contactFirstNameEl, `Ім'я`, 3, 30)
   validateInput(contactEmailEl, `Email`, 3, 30)
   validateInput(contactMessageEl, `Повідомлення`, 10, 1000)
@@ -79,17 +67,26 @@ const sendContactMessage = () => {
   return true
 }
 
-//HELPFUL FUNCTIONS
-//Reset validation variales function
+//ADDITIONAL FUNCTIONS
+//Reset validation variables 
 const resetValidationVariables = () => validatedContactFirstName = validatedContactEmail = validatedContactMessage = validatedContactCaptcha = false
 
+//Captcha validation
+const validateContactCaptcha = async () => {
+  let captcha = await grecaptcha.getResponse(1)
+  captcha !== '' ?
+    (contactCaptcha.nextSibling.nextSibling.innerHTML = ``, validatedContactCaptcha = true) :
+    (contactCaptcha.nextSibling.nextSibling.innerHTML = `Підтвердіть будь ласка, що ви не робот.`, validatedContactCaptcha = false)
+}
+window.validateContactCaptcha = validateContactCaptcha
+
 //ADD CLICK EVENT TO CONTACT FORM`S BUTTON
-sendContactButton.addEventListener('click', (e) => {
+sendContactBtn.addEventListener('click', (e) => {
   e.preventDefault()
   sendContactMessage()
- !!validatedContactFirstName && !!validatedContactFirstName && !!validatedContactMessage && !!validatedContactCaptcha &&
-  (acceptMail(),
-  contactFormEl.reset(),
-  resetValidationVariables()
-  )
+  !!validatedContactFirstName && !!validatedContactFirstName && !!validatedContactMessage && !!validatedContactCaptcha &&
+    (acceptSuccessfulModal(contactPage),
+      contactFormEl.reset(),
+      resetValidationVariables()
+    )
 })
