@@ -3,9 +3,9 @@
 const loginBtn = document.querySelector("#login-button")
 
 //LOGIN FUNCTION
-const login = async () => {
-    const username = document.querySelector("#username").value;
-    const password = document.querySelector("#password").value;
+const login = async() => {
+    const username = document.querySelector("#login-username").value;
+    const password = document.querySelector("#login-password").value;
 
     const data = {
         'email': username,

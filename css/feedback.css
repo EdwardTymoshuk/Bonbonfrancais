@@ -1,91 +1,119 @@
+/*ANIMATIONS*/
+
 @keyframes openWindow {
-    0% {opacity: 0; transform: scale(0.8);}
-  100% {opacity: 1;transform: scale(1);}
-  }
-@keyframes closeWindow {
-    0% {opacity: 1; transform: scale(1);}
-    100% {opacity: 0; transform: scale(0.8);}
-  }
-.fa-check-circle {
-    font-size: 4em;
-    color: #28a745;
-    padding: 20px;
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
+
+@keyframes closeWindow {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+
+/* FEEDBACK MODAL WINDOW */
+
 .feedback-modal {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.form-control {
-    margin-bottom: 10px;
-}
-.modal-header span{
+
+.modal-header span {
     text-align: center;
     font-size: 2em;
 }
-.disabled {
-    cursor: not-allowed;
+
+.closeWindow {
+    opacity: 1;
+    animation: closeWindow 0.7s forwards;
 }
-.not-accepted {
+
+.openWindow {
+    opacity: 0;
+    animation: openWindow 0.7s forwards;
+}
+
+
+/* NEW FEEDBACK ELEMENT */
+
+.not-accepted-feedback {
     background: lightgrey;
 }
-.not-accepted span,
-.not-accepted img,
-.not-accepted h3,
-.not-accepted div
-{
+
+.not-accepted-feedback span,
+.not-accepted-feedback img,
+.not-accepted-feedback h3,
+.not-accepted-feedback div {
     color: grey;
     -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+    filter: grayscale(100%);
 }
-.not-accepted:hover {
+
+.not-accepted-feedback:hover {
     animation: none;
 }
+
 .feedback-thanks {
     margin: 50px 20px 0 20px;
     text-align: center;
     color: #000;
 }
-.feedback-thanks span{
+
+.feedback-thanks span {
     color: #000;
 }
+
+
+/* ADMIN NEW FEEDBACK ELEMENT  */
+
+.feedback-container .btn-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.feedback-container .btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
 .feedback-accepted {
     display: inline-flex;
     align-items: center;
 }
+
 .feedback-accepted span {
     margin: 0;
     font-size: 1.4em;
 }
+
 .feedback-rejected {
     display: inline-flex;
     align-items: center;
 }
+
 .feedback-rejected i {
     font-size: 4em;
     color: #dc3545;
     padding: 20px;
 }
+
 .feedback-rejected span {
     margin: 0;
     font-size: 1.4em;
-} 
-  .closeWindow {
-    opacity: 1;
-    animation: closeWindow 0.7s forwards;
-  }
-  .openWindow {
-    opacity: 0;
-    animation: openWindow 0.7s forwards;
-  }
-    .btn-success {
-        color: #fff;
-        background-color: #28a745;
-        border-color: #28a745;
-    }
-    .btn-danger {
-        color: #fff;
-    background-color: #dc3545;
-    border-color: #dc3545;
-    }
+}
