@@ -1023,6 +1023,7 @@ input:checked+.slider:before {
     color: rgb(236, 193, 136);
 }
 
+/* // COMMON STYLES // */
 
 /* PAGE HEADER */
 
@@ -1040,7 +1041,6 @@ input:checked+.slider:before {
 .page-header h2 {
     font-size: 2.5em;
 }
-
 
 /* SEPARATOR BLOCK*/
 
@@ -1070,11 +1070,16 @@ input:checked+.slider:before {
     text-align: center;
 }
 
+/* BOOK LESSON DIV */
 
-/* FREE LESSON BUTTON */
+.book-lesson {
+    display: flex;
+    justify-content: center;
+}
 
-.free-lesson {
-    padding: 20px 0;
+/* BOOK LESSON BUTTON */
+
+.book-lesson-btn {
     -ms-flex-item-align: center;
     align-self: center;
     justify-self: center;

@@ -10,6 +10,8 @@ const sendFeedbackBtn = document.querySelector('#send-feedback-button')
 const feedbackArticles = document.querySelector('#feedback-articles')
 const feedbackCaptcha = document.querySelector('#feedback-captcha')
 
+!pageLang ? pageLang = localStorage.getItem('lang') : ''
+
 //DEFINE VALIDATION VARIABLES
 let validatedFeedbackFirstName, validatedFeedbackEmail, validatedFeedbackCountry, validatedFeedbackText, validatedFeedbackCaptcha
 
@@ -20,7 +22,7 @@ feedbackCaptcha.setAttribute('data-expired-callback', 'grecaptcha.reset()')
 //ADD INPUT ONCHANGE VALIDATION
 //First name validation
 firstNameEl.addEventListener('change', e => {
-        validateInput(e.currentTarget, `Ім'я`, 3, 30) ? validatedFeedbackFirstName = true : validatedFeedbackFirstName = false
+        validateInput(e.currentTarget, `${pageLang === 'ua' ? "Ім'я" : "Name"}`, 3, 30) ? validatedFeedbackFirstName = true : validatedFeedbackFirstName = false
     })
     //Email validation
 emailEl.addEventListener('change', e => {
@@ -29,11 +31,11 @@ emailEl.addEventListener('change', e => {
     })
     //Country validation
 countryEl.addEventListener('change', e => {
-        validateInput(e.currentTarget, `Країна`, 3, 30) ? validatedFeedbackCountry = true : validatedFeedbackCountry = false
+        validateInput(e.currentTarget, `${pageLang === 'ua' ? "Країна" : "Country"}`, 3, 30) ? validatedFeedbackCountry = true : validatedFeedbackCountry = false
     })
     //Feedback text validation
 feedbackEl.addEventListener('change', e => {
-    validateInput(e.currentTarget, `Відгук`, 3, 1000) ? validatedFeedbackText = true : validatedFeedbackText = false
+    validateInput(e.currentTarget, `${pageLang === 'ua' ? "Відгук" : "Feedback"}`, 3, 1000) ? validatedFeedbackText = true : validatedFeedbackText = false
 })
 
 //MAIN FUNCTIONS
@@ -58,28 +60,28 @@ const setFeedbackAPI = async(firstName, country, email, feedback, date) => {
 
 //Add new feedback
 const setFeedback = async() => {
-    const article = document.createElement('article')
-    const firstName = firstNameEl.value
-    const country = countryEl.value
-    const email = emailEl.value
-    const feedback = feedbackEl.value
-    const date = new Date().toJSON()
+        const article = document.createElement('article')
+        const firstName = firstNameEl.value
+        const country = countryEl.value
+        const email = emailEl.value
+        const feedback = feedbackEl.value
+        const date = new Date().toJSON()
 
-    validateInput(firstNameEl, `Ім'я`, 3, 15)
-    validateInput(countryEl, `Країна`, 3, 15)
-    validateInput(emailEl, `Email`, 3, 30)
-    validateEmail(emailEl)
-    validateInput(feedbackEl, `Відгук`, 3, 750)
-    validateFeedbackCaptcha()
+        validateInput(firstNameEl, `${pageLang === 'ua' ? "Ім'я" : "Name"}`, 3, 30)
+        validateInput(countryEl, `${pageLang === 'ua' ? "Країна" : "Country"}`, 3, 30)
+        validateInput(emailEl, `Email`, 3, 45)
+        validateEmail(emailEl)
+        validateInput(feedbackEl, `${pageLang === 'ua' ? "Відгук" : "Feedback"}`, 3, 1000)
+        validateFeedbackCaptcha()
 
-    !!validatedFeedbackFirstName && !!validatedFeedbackEmail && !!validatedFeedbackCountry && !!validatedFeedbackText && !!validatedFeedbackCaptcha &&
-        (loadingBtnToggle(true, sendFeedbackBtn),
+        !!validatedFeedbackFirstName && !!validatedFeedbackEmail && !!validatedFeedbackCountry && !!validatedFeedbackText && !!validatedFeedbackCaptcha &&
+            (loadingBtnToggle(true, sendFeedbackBtn),
 
-            await setFeedbackAPI(firstName, country, email, feedback, date).then(res => {
-                if (res.status !== 200) {
-                    console.warn('Looks like there was a problem. Status Code: ' + res.status, res)
-                } else {
-                    article.innerHTML = `
+                await setFeedbackAPI(firstName, country, email, feedback, date).then(res => {
+                        if (res.status !== 200) {
+                            console.warn('Looks like there was a problem. Status Code: ' + res.status, res)
+                        } else {
+                            article.innerHTML = `
     <article class="feedback-content container-fluid not-accepted-feedback">
     <div class="feedback-container row">
     <div class="feedback-left-col col-sm-12 col-md-3">
@@ -91,7 +93,12 @@ const setFeedback = async() => {
         <p>${date.split('T')[0]}</p>
       </div>
       <div class="col-sm-12 feedback-thanks">
-      <span>Дякую за витрачений час, це дуже важливо для мене! Твій відгук з'явиться на сторінці після модерації.</span>
+      ${pageLang === 'ua' 
+      ?
+      `<span>Дякую за витрачений час, це дуже важливо для мене! Твій відгук з'явиться на сторінці після модерації.</span>`
+      :
+      `<span>Thank you for your time, this is very important for me! Your feedback will appear on the page after moderation.</span>`
+        }
       </div>
     </div>
   </article>
@@ -123,7 +130,7 @@ const validateFeedbackCaptcha = async() => {
     let captcha = await grecaptcha.getResponse(0)
     captcha !== '' ?
         (feedbackCaptcha.nextSibling.nextSibling.innerHTML = ``, validatedFeedbackCaptcha = true) :
-        (feedbackCaptcha.nextSibling.nextSibling.innerHTML = `Підтвердіть будь ласка, що ви не робот.`, validatedFeedbackCaptcha = false)
+        (feedbackCaptcha.nextSibling.nextSibling.innerHTML = `${pageLang === 'ua' ? "Підтвердіть будь ласка, що ви не робот." : "Please confirm that you are not a robot"}`, validatedFeedbackCaptcha = false)
 }
 window.validateFeedbackCaptcha = validateFeedbackCaptcha
 

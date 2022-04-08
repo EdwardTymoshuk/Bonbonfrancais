@@ -121,15 +121,15 @@ const removeElement = (el) => {
 //VALIDATION
 //Email validation
 const validateEmail = (emailEl) => {
-    !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailEl.value) ? (emailEl.classList.add('input-error'), emailEl.nextSibling.nextSibling.innerHTML = `Будь ласка введіть email адресу у правильному форматі "example@example.com"`, validatedFeedbackEmail = false) : validatedFeedbackEmail = true
+    !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailEl.value) ? (emailEl.classList.add('input-error'), emailEl.nextSibling.nextSibling.innerHTML = `${pageLang === 'ua' ? `Будь ласка введіть email адресу у правильному форматі "example@example.com"` : `Please enter an email address in the correct format "example@example.com"`}`, validatedFeedbackEmail = false) : validatedFeedbackEmail = true
 }
 
 //Input validation
 const validateInput = (input, fieldName, min, max) => {
     let validated
-    !input.value ? (input.classList.add('input-error'), input.nextElementSibling.innerHTML = `Поле ${fieldName} є обов'язковим`) :
-        input.value.length < min ? (input.classList.add('input-error'), input.nextElementSibling.innerHTML = `Поле ${fieldName} не може бути коротше, ніж ${min} символи(-ів)`) :
-            input.value.length > max ? (input.classList.add('input-error'), input.nextElementSibling.innerHTML = `Поле ${fieldName} не може бути довше, ніж ${max} символи(-ів)`) : (input.classList.remove('input-error'), input.nextSibling.nextSibling.innerHTML = ``, validated = true)
+    !input.value ? (input.classList.add('input-error'), input.nextElementSibling.innerHTML = `${pageLang === 'ua' ? `Поле ${fieldName} є обов'язковим` : `The field ${fieldName} is required.`}`) :
+        input.value.length < min ? (input.classList.add('input-error'), input.nextElementSibling.innerHTML = `${pageLang === 'ua' ? `Поле ${fieldName} не може бути коротше, ніж ${min} символи(-ів)` : `Field ${fieldName} must be at least ${min} characters`}`) :
+            input.value.length > max ? (input.classList.add('input-error'), input.nextElementSibling.innerHTML = `${pageLang === 'ua' ? `Поле ${fieldName} не може бути довше, ніж ${max} символи(-ів)` : `Field ${fieldName} can't be konger than ${max} characters`}`) : (input.classList.remove('input-error'), input.nextSibling.nextSibling.innerHTML = ``, validated = true)
     return validated
 }
 

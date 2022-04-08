@@ -16,55 +16,55 @@ contactCaptcha.setAttribute('data-expired-callback', 'grecaptcha.reset()')
 //INPUT`S ONCHANGE VALIDATION
 //First name validation
 contactFirstNameEl.addEventListener('change', e => {
-  validateInput(e.currentTarget, `Ім'я`, 3, 30) ? validatedContactFirstName = true : validatedContactFirstName = false
+    validateInput(e.currentTarget, `${pageLang === 'ua' ? "Ім'я" : "Name"}`, 3, 30) ? validatedContactFirstName = true : validatedContactFirstName = false
 })
 
 //Email validation
 contactEmailEl.addEventListener('change', e => {
-  validateInput(e.currentTarget, `Email`, 3, 30) ? validatedContactFirstName = true : validatedContactEmail = false
-  validateEmail(contactEmailEl)
+    validateInput(e.currentTarget, `Email`, 3, 30) ? validatedContactFirstName = true : validatedContactEmail = false
+    validateEmail(contactEmailEl)
 })
 
 //Contact message validation
 contactMessageEl.addEventListener('change', e => {
-  validateInput(e.currentTarget, `Повідомлення`, 10, 1000) ? validatedContactMessage = true : validatedContactMessage = false
+    validateInput(e.currentTarget, `${pageLang === 'ua' ? "Повідомлення" : "Message"}`, 10, 1000) ? validatedContactMessage = true : validatedContactMessage = false
 })
 
 //MAIN FUNCTIONS
 //API to send contact form`s data
 const sendContactMessageAPI = async (firstName, email, message) => {
-  const data = {
-    firstName,
-    email,
-    message
-  }
-  const settings = {
-    method: 'POST',
-    headers: {
-      'Access-Control-Allow-Methods': 'HEAD, GET, POST, PUT, DELETE',
-      'Access-Control-Allow-Origin': '*'
-    },
-    body: JSON.stringify(data)
-  }
-  const url = '/mail.php'
+    const data = {
+        firstName,
+        email,
+        message
+    }
+    const settings = {
+        method: 'POST',
+        headers: {
+            'Access-Control-Allow-Methods': 'HEAD, GET, POST, PUT, DELETE',
+            'Access-Control-Allow-Origin': '*'
+        },
+        body: JSON.stringify(data)
+    }
+    const url = '/mail.php'
 
-  try {
-    return await fetch(url, settings)
-  } catch (err) {
-    console.warn(err)
-  }
+    try {
+        return await fetch(url, settings)
+    } catch (err) {
+        console.warn(err)
+    }
 }
 
 //Send message from contact form function
 const sendContactMessage = () => {
 
-  validateInput(contactFirstNameEl, `Ім'я`, 3, 30)
-  validateInput(contactEmailEl, `Email`, 3, 30)
-  validateInput(contactMessageEl, `Повідомлення`, 10, 1000)
-  validateContactCaptcha()
+    validateInput(contactFirstNameEl, `${pageLang === 'ua' ? "Ім'я" : "Name"}`, 3, 30)
+    validateInput(contactEmailEl, `Email`, 3, 30)
+    validateInput(contactMessageEl, `${pageLang === 'ua' ? "Повідомлення" : "Message"}`, 10, 1000)
+    validateContactCaptcha()
 
-  !!validatedContactFirstName && !!validatedContactFirstName && !!validatedContactMessage && sendContactMessageAPI(contactFirstNameEl.value, contactEmailEl.value, contactMessageEl.value)
-  return true
+    !!validatedContactFirstName && !!validatedContactFirstName && !!validatedContactMessage && sendContactMessageAPI(contactFirstNameEl.value, contactEmailEl.value, contactMessageEl.value)
+    return true
 }
 
 //ADDITIONAL FUNCTIONS
@@ -73,20 +73,20 @@ const resetValidationVariables = () => validatedContactFirstName = validatedCont
 
 //Captcha validation
 const validateContactCaptcha = async () => {
-  let captcha = await grecaptcha.getResponse(1)
-  captcha !== '' ?
-    (contactCaptcha.nextSibling.nextSibling.innerHTML = ``, validatedContactCaptcha = true) :
-    (contactCaptcha.nextSibling.nextSibling.innerHTML = `Підтвердіть будь ласка, що ви не робот.`, validatedContactCaptcha = false)
+    let captcha = await grecaptcha.getResponse(1)
+    captcha !== '' ?
+        (contactCaptcha.nextSibling.nextSibling.innerHTML = ``, validatedContactCaptcha = true) :
+        (contactCaptcha.nextSibling.nextSibling.innerHTML = `${pageLang === 'ua' ? "Підтвердіть будь ласка, що ви не робот." : "Please confirm that you are not a robot"}`, validatedContactCaptcha = false)
 }
 window.validateContactCaptcha = validateContactCaptcha
 
 //ADD CLICK EVENT TO CONTACT FORM`S BUTTON
 sendContactBtn.addEventListener('click', (e) => {
-  e.preventDefault()
-  sendContactMessage()
-  !!validatedContactFirstName && !!validatedContactFirstName && !!validatedContactMessage && !!validatedContactCaptcha &&
-    (acceptSuccessfulModal(contactPage),
-      contactFormEl.reset(),
-      resetValidationVariables()
-    )
+    e.preventDefault()
+    sendContactMessage()
+    !!validatedContactFirstName && !!validatedContactFirstName && !!validatedContactMessage && !!validatedContactCaptcha &&
+        (acceptSuccessfulModal(contactPage),
+            contactFormEl.reset(),
+            resetValidationVariables()
+        )
 })
