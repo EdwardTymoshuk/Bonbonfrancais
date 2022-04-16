@@ -4,6 +4,7 @@ const headerPanelRow = document.querySelector('.header-navbar')
 const headerEl = document.querySelector('#header-block')
 const headerBlock = document.querySelector('#header-block')
 const headerPanel = document.querySelector('#header-panel')
+const langCheckBox = document.querySelector('#lang-checkbox')
 //Contact page
 const contactPage = document.querySelector('#contact')
 const contactForm = document.querySelector('#contact-form')
@@ -14,8 +15,14 @@ const firstBlockBtn = document.querySelector('#first-block-btn')
 const secondBlockBtn = document.querySelector('#second-block-btn')
 const thirdBlockBtn = document.querySelector('#third-block-btn')
 
-//GET ELEMENTS FROM LOCAL STORAGE
-const pageLang = localStorage.getItem('lang')
+//SWITCH WEB PAGE LANGUAGE
+!!langCheckBox.checked ? localStorage.setItem('lang', 'en') : localStorage.setItem('lang', 'ua')
+langCheckBox.addEventListener('change', (e) => {
+ !e.currentTarget.checked ? (localStorage.setItem('lang', 'ua'), window.location.href = '/index.html') : (localStorage.setItem('lang', 'en'),  window.location.href = '/index-en.html') 
+})
+
+//GET PAGE LANGUAGE FROM LOCAL STORAGE
+let pageLang = localStorage.getItem('lang')
 const localStorageName = localStorage.getItem('localStorageName')
 
 //CREATE NAVBAR GREETING DIV ELEMENT AND ADD STYLE
@@ -24,13 +31,6 @@ navbarGreeting.classList.add('navbar-greeting')
 
 //PUT LOCALSTORAGENAME TO NAVBAR GREETING DIV
 !!localStorageName && (navbarGreeting.innerHTML = `<p>Привіт, <strong>${localStorageName}</strong>.</p><button id="logout-btn" class="btn btn-danger logout-btn" onclick="logout()">Log out</button>`, headerPanelRow.appendChild(navbarGreeting))
-
-//SWITCH WEB PAGE LANGUAGE 
-const langCheckBox = document.querySelector('#lang-checkbox')
-langCheckBox.addEventListener('change', () => {
-    !!langCheckBox.checked ? localStorage.setItem('lang', 'en') : localStorage.setItem('lang', 'ua')
-    !!localStorage.getItem('lang') && localStorage.getItem('lang') === 'en' ? (langCheckBox.checked = true, window.location.href = 'en/index.html') : (langCheckBox.checked = false, window.location.href = '../index.html')
-})
 
 //HEADER TRANSFORM
 window.addEventListener('scroll', function () {
@@ -104,8 +104,15 @@ const acceptSuccessfulModal = (pageElement) => {
     <div class="thanks-modal" id="thanks-modal">
     <button id="close-thanks-modal-btn" class="close" onclick="removeElement('thanks-container')">✖</button>
     <i class="fas fa-check-circle"></i>
-    ${pageElement == feedbackContainer ? `<p>Твій відгук успішно додано. Гарного дня!</p>)` : `<p>Твоє повідомлення успішно відправлено. Гарного дня!</p>`}
-    <button id="great-thanks-modal-btn" class="btn feedback-btn" onclick="removeElement('thanks-container')">Чудово!</button>
+    ${pageElement == feedbackContainer ? 
+        pageLang === 'ua' ? 
+        `<p>Твій відгук успішно додано. Гарного дня!</p>` :
+        `<p>Your feedback was succesfuly added. Have a nice day!</p>` :
+        pageLang === 'ua' ? 
+         `<p>Твоє повідомлення успішно відправлено. Гарного дня!</p>` :
+         `<p>Your message was succesfuly sent. Have a nice day!</p>`
+        }
+    <button id="great-thanks-modal-btn" class="btn feedback-btn" onclick="removeElement('thanks-container')">${ pageLang === 'ua' ? 'Чудово!' : 'Greate!'}</button>
   </div>
     `
     pageElement.appendChild(modalWindow)

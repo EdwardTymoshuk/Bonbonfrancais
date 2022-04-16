@@ -10,7 +10,7 @@ const sendFeedbackBtn = document.querySelector('#send-feedback-button')
 const feedbackArticles = document.querySelector('#feedback-articles')
 const feedbackCaptcha = document.querySelector('#feedback-captcha')
 
-!pageLang ? pageLang = localStorage.getItem('lang') : ''
+!pageLang || pageLang == ''  ? pageLang = localStorage.getItem('lang') : ''
 
 //DEFINE VALIDATION VARIABLES
 let validatedFeedbackFirstName, validatedFeedbackEmail, validatedFeedbackCountry, validatedFeedbackText, validatedFeedbackCaptcha
