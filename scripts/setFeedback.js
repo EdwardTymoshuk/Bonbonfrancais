@@ -15,10 +15,6 @@ const feedbackCaptcha = document.querySelector('#feedback-captcha')
 //DEFINE VALIDATION VARIABLES
 let validatedFeedbackFirstName, validatedFeedbackEmail, validatedFeedbackCountry, validatedFeedbackText, validatedFeedbackCaptcha
 
-//ADD ATTRIBUTES TO PAGE ELLEMENTS
-feedbackCaptcha.setAttribute('data-callback', ' validateFeedbackCaptcha')
-feedbackCaptcha.setAttribute('data-expired-callback', 'grecaptcha.reset()')
-
 //ADD INPUT ONCHANGE VALIDATION
 //First name validation
 firstNameEl.addEventListener('change', e => {
@@ -109,7 +105,7 @@ const setFeedback = async() => {
             acceptSuccessfulModal(feedbackContainer),
             hideFeedbackModalWindow('feedback-modal'),
             modalForm.reset(),
-            grecaptcha.reset(),
+            grecaptcha.reset(0),
             resetValidatedVariables(),
             loadingBtnToggle(false, sendFeedbackBtn))
 }
@@ -133,6 +129,16 @@ const validateFeedbackCaptcha = async() => {
         (feedbackCaptcha.nextSibling.nextSibling.innerHTML = `${pageLang === 'ua' ? "Підтвердіть будь ласка, що ви не робот." : "Please confirm that you are not a robot"}`, validatedFeedbackCaptcha = false)
 }
 window.validateFeedbackCaptcha = validateFeedbackCaptcha
+
+//Clear captcha validated value 
+const clearValidatedFeedbackCaptcha = () => {
+    validatedFeedbackCaptcha = false
+}
+window.clearValidatedFeedbackCaptcha = clearValidatedFeedbackCaptcha
+
+//SET ATRIBUTES TO PAGE ELEMENTS
+feedbackCaptcha.setAttribute('data-callback', 'validateFeedbackCaptcha')
+feedbackCaptcha.setAttribute('data-expired-callback', 'clearValidatedFeedbackCaptcha')
 
 //ADD CLICK EVENT TO SEND FEEDBACK BUTTON
 sendFeedbackBtn.addEventListener('click', () => setFeedback())

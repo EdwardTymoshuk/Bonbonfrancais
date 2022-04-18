@@ -9,10 +9,6 @@ const sendContactBtn = document.querySelector('#send-contact-button')
 //DEFINE VARIABLES FOR VALIDATION AND SET DEFAUT VALUE TO FALSE
 let validatedContactFirstName = validatedContactEmail = validatedContactMessage = validatedContactCaptcha = false
 
-//SET ATTRIBUTES FOR PAGE ELLEMENTS
-contactCaptcha.setAttribute('data-callback', 'validateContactCaptcha')
-contactCaptcha.setAttribute('data-expired-callback', 'grecaptcha.reset()')
-
 //INPUT`S ONCHANGE VALIDATION
 //First name validation
 contactFirstNameEl.addEventListener('change', e => {
@@ -28,6 +24,10 @@ contactEmailEl.addEventListener('change', e => {
 //Contact message validation
 contactMessageEl.addEventListener('change', e => {
     validateInput(e.currentTarget, `${pageLang === 'ua' ? "Повідомлення" : "Message"}`, 10, 1000) ? validatedContactMessage = true : validatedContactMessage = false
+})
+
+contactCaptcha.addEventListener('cheked', e => {
+    validateContactCaptcha()
 })
 
 //MAIN FUNCTIONS
@@ -71,7 +71,7 @@ const sendContactMessage = () => {
 //Reset validation variables 
 const resetValidationVariables = () => validatedContactFirstName = validatedContactEmail = validatedContactMessage = validatedContactCaptcha = false
 
-//Captcha validation
+// Captcha validation
 const validateContactCaptcha = async () => {
     let captcha = await grecaptcha.getResponse(1)
     captcha !== '' ?
@@ -80,6 +80,16 @@ const validateContactCaptcha = async () => {
 }
 window.validateContactCaptcha = validateContactCaptcha
 
+//Clear captcha validated value 
+const clearValidatedContactCaptcha = () => {
+    validatedContactCaptcha = false
+}
+window.clearValidatedContactCaptcha = clearValidatedContactCaptcha
+
+//SET ATRIBUTES TO PAGE ELEMENTS
+contactCaptcha.setAttribute('data-callback', 'validateContactCaptcha')
+contactCaptcha.setAttribute('data-expired-callback', 'clearValidatedContactCaptcha')
+
 //ADD CLICK EVENT TO CONTACT FORM`S BUTTON
 sendContactBtn.addEventListener('click', (e) => {
     e.preventDefault()
@@ -87,6 +97,7 @@ sendContactBtn.addEventListener('click', (e) => {
     !!validatedContactFirstName && !!validatedContactFirstName && !!validatedContactMessage && !!validatedContactCaptcha &&
         (acceptSuccessfulModal(contactPage),
             contactFormEl.reset(),
+            grecaptcha.reset(1),
             resetValidationVariables()
         )
 })
