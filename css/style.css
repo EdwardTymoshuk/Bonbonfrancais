@@ -1157,13 +1157,17 @@ blockquote:before {
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
+    #header-panel-row {
+        padding: 5px 0;
+    }
     .navbar {
         font-size: 1.2em;
     }
+    .navbar-toggler {
+        color: #6E535B;
+    }
     .header-logo {
-        visibility: hidden;
-        font-size: 2em;
-        align-self: center;
+        display: none;
     }
     .header-socials a {
         font-size: .6em;
@@ -1180,12 +1184,6 @@ blockquote:before {
     }
     .header-socials-items a {
         padding-right: 0;
-    }
-    .header-languages {
-        font-size: .8em
-    }
-    .header-languages img {
-        height: 2em;
     }
     .navbar-greeting {
         position: absolute;
