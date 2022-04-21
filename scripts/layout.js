@@ -5,6 +5,8 @@ const headerEl = document.querySelector('#header-block')
 const headerBlock = document.querySelector('#header-block')
 const headerPanel = document.querySelector('#header-panel')
 const langCheckBox = document.querySelector('#lang-checkbox')
+//Navbar
+const navbarNav = document.querySelector('#navbarNav')
 //Contact page
 const contactPage = document.querySelector('#contact')
 const contactForm = document.querySelector('#contact-form')
@@ -49,6 +51,10 @@ window.addEventListener('scroll', function () {
         }
     }
 })
+
+//ADD COLLAPS FUNCTION TO NAVBAR ON MOBILE SCREENS
+window.screen.width >= 320 && window.screen.width <= 767 && (navbarNav.setAttribute('data-toggle', 'collapse'),
+navbarNav.setAttribute('data-target', '#navbarNav'))
 
 //ADD EVENT LISTENERS TO BUTTONS
 //Order trial lesson
