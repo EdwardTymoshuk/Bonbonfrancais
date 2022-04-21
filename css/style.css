@@ -1253,6 +1253,7 @@ blockquote:before {
     }
     .feedback-content {
         padding: 10px 30px;
+        justify-content: center;
     }
     .price-content:hover .price-thumbnail {
         -webkit-transform: none;
