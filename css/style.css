@@ -1267,7 +1267,10 @@ blockquote:before {
         justify-self: center;
         font-size: 1em;
     }
-    footer>div {
+    .footer .text-left {
+        text-align: center !important;
+    }
+    .footer .text-right {
         text-align: center !important;
     }
     .separator h2 {
