@@ -1009,7 +1009,7 @@ input:checked+.slider:before {
 
 .footer span {
     padding: 30px 10px;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 .footer a {
@@ -1210,10 +1210,16 @@ blockquote:before {
     .about-me-photo {
         padding-bottom: 20px;
     }
+    .about-me-container ul {
+        padding: 0;
+    }
     .advantages-container {
         text-align: center;
         display: grid;
         grid-template-columns: 1fr;
+    }
+    .advantages-container ul {
+        padding: 0;
     }
     .advantages-container span {
         margin: 10px;
@@ -1242,8 +1248,15 @@ blockquote:before {
     .how-we-work-container-photo {
         display: none;
     }
+    .how-we-work-container-content ul {
+        padding: 0;
+    }
     .feedback-content {
         padding: 10px 30px;
+    }
+    .price-content:hover .price-thumbnail {
+        -webkit-transform: none;
+        transform: none;
     }
     .contact-social i {
         justify-self: center;
