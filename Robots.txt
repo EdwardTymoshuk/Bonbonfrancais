@@ -12,4 +12,4 @@ Allow: /img/
 Disallow: /scripts/
 Disallow: /css/
 Disallow: /mail.php
-Host: http://bonbonfrancais.online/
+Host: https://bonbonfrancais.online/
