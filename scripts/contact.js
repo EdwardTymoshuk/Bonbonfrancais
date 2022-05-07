@@ -32,27 +32,46 @@ contactCaptcha.addEventListener('cheked', e => {
 
 //MAIN FUNCTIONS
 //API to send contact form`s data
-const sendContactMessageAPI = async (firstName, email, message) => {
-    const data = {
-        firstName,
-        email,
-        message
-    }
-    const settings = {
-        method: 'POST',
-        headers: {
-            'Access-Control-Allow-Methods': 'HEAD, GET, POST, PUT, DELETE',
-            'Access-Control-Allow-Origin': '*'
-        },
-        body: JSON.stringify(data)
-    }
-    const url = '/mail.php'
+// const sendContactMessageAPI = async (firstName, email, message) => {
+//     const data = {
+//         firstName,
+//         email,
+//         message
+//     }
+//     const settings = {
+//         method: 'POST',
+//         headers: {
+//             'Access-Control-Allow-Methods': 'HEAD, GET, POST, PUT, DELETE',
+//             'Access-Control-Allow-Origin': '*'
+//         },
+//         body: JSON.stringify(data)
+//     }
+//     const url = 'mail.php'
 
-    try {
-        return await fetch(url, settings)
-    } catch (err) {
-        console.warn(err)
-    }
+//     try {
+//         await fetch(url, settings)
+//     } catch (err) {
+//         console.warn(err)
+//     }
+// }
+function sendContactMessageAPI (firstName, email, message) {
+        $.ajax({
+        
+            url: "mail.php",
+            type: "post",
+
+            data: {
+                "firstName": firstName,
+                "email": email,
+                "message": message
+            },
+
+            success: function(data) {
+                if ($("#contact-firstName").val() != '' && $("#contact-email").val() != '' && $("#contact-message").val() != '') {
+                    $("#contact-firstName").val(''), $("#contact-email").val(''), $("#contact-message").val('');
+                }
+            } 
+        });
 }
 
 //Send message from contact form function

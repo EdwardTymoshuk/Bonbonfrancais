@@ -10,23 +10,52 @@
 
 		}
 	
-		function send_form($message) {	
-			$mail_to = "eduard.tymoshuk@gmail.com";
+		function send_form($message) {
+	
+			$mail_to = "tetianamirchukk@gmail.com";
 			$subject = "Лист з контактної форми";
-			$headers = "From: Нове повідомлення з сайту bonbonfrancais.online <no-reply@".$_SERVER['HTTP_HOST'].">\r\n";
+			$headers = "MIME-Version: 1.0\r\n";
+			$headers .= "Content-type: text/html; charset=utf-8\r\n";
+			$headers .= "From: Нове повідомлення з сайту bonbonfrancais.online <no-reply@".$_SERVER['HTTP_HOST'].">\r\n";
 
 			mail($mail_to, $subject, $message, $headers);
+		
 		}
 
 		$firstName = strip_tags($_POST["firstName"]);
 		$email = strip_tags($_POST["email"]); 
 		$mess = strip_tags($_POST["message"]); 
+		
+		if(firstName == "") {
+
+			echo "Вкажіть будь ласка ім'я.";
+
+			die();
+
+		}
+
+		if(!preg_match("|^([a-z0-9_.-]{1,20})@([a-z0-9.-]{1,20}).([a-z]{2,4})|is", strtolower($email))) { 
+
+			echo "Вкажіть або перевірте E-mail.";
+
+			die();
+
+		}
+
+		if($mess == "") { 
+
+			echo "Вкажіть будь ласка текст повідомлення.";
+
+			die();
+
+		}
+
 
 		$message = <<<HTML
 
-			<b>Імя</b>: {$firstName}<br>
+			<b>Ім'я</b>: {$firstName}<br>
 			<b>E-mail</b>: {$email}<br>
-			<b>Текст листа</b>: {$mess}
+			<b>Текст письма</b>: {$mess}
 
 HTML;
 
