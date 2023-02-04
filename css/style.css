@@ -215,6 +215,10 @@ section {
     display: inline-flex;
 }
 
+.header-socials-items li{
+    cursor: pointer;
+}
+
 .header-socials-items a {
     padding-right: 20px;
     color: #000;
@@ -546,11 +550,12 @@ input:checked+.slider:before {
     font-family: 'Lora', serif;
     font-style: italic;
 }
-.about-me-our-team p {
+.about-me-our-team > p {
     font-family: 'Lora', serif;
 }
 .about-me-our-team ul {
     font-size: 1.3em;
+    text-align: left;
 }
 .about-me-our-team ul > li{
     padding: 10px;
@@ -562,8 +567,26 @@ input:checked+.slider:before {
 .about-me-our-team-teacher-info {
 
 }
+.about-me-our-team-teacher-info header {
+    text-align: center;
+    font-size: 3em;
+    font-weight: bold;
+    color: #6E535B;
+    font-family: 'Podkova', serif;
+}
+.about-me-our-team-teacher-info > p {
+    text-align: left;
+    font-size: 1.3em
+}
+.about-me-our-team-teacher-info > p:first-of-type {
+    font-style: italic;
+    text-align: center;
+}
 .our-team-modal {
     font-size: .8em;
+}
+.our-team-modal .modal-body{
+    padding: 2rem;
 }
 
 /* ADVANTAGES PAGE */
@@ -1248,6 +1271,13 @@ blockquote:before {
     }
     .about-me-container ul {
         padding: 0;
+    }
+    .about-me-our-team-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .about-me-our-team-teacher {
+        font-size: 1.4em;
     }
     .advantages-container {
         text-align: center;
