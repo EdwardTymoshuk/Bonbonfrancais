@@ -9,7 +9,7 @@ HTML5, CSS3, JS
 ## Screenshot
 
 ![website screenshot](https://github.com/EdwardTymoshuk/Bonbonfrancais
-/blob/master/img/screenshot.jpg?raw=true)
+/blob/img/screenshot.jpg?raw=true)
 
 
 
