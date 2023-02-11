@@ -1,6 +1,6 @@
 # Landing Page For French Teacher
 
-Landing page for French teacher and her team, where you can all info you need. You can contact, book a lesson or leave a feedback.
+Landing page for French teacher and her team, where you can find a whole info about teachers and lessons. You can also contact, book a lesson, read or leave a feedback.
 
 ## Stack
 
